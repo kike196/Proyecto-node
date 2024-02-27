@@ -16,17 +16,26 @@
                 <h3>Contact me</h3>
             </div>
             <div class="card-body">
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" placeholder="Email" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="message">message</label>
-                    <textarea name="message" rows="3" class="form-control" placeholder="Write a Message"></textarea>
-                </div>
-                <button class="btn btn-primary btn-block">
-                    save
-                </button>
+                <form action="/send-email" method="POST">
+                    <div class="mb-3">
+                        <label for="name">name</label>
+                        <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" placeholder="Phone" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message">message</label>
+                        <textarea name="message" rows="3" class="form-control" placeholder="Write a Message"></textarea>
+                    </div>
+                    <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                </form>
             </div>
         </div>
     </div>
