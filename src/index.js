@@ -2,12 +2,8 @@
 import express, { json } from "express";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
-import { createRequire } from 'module';
 
-// Crear una función require en el contexto del módulo ESM
-const require = createRequire(import.meta.url);
-// Cargar las variables de entorno desde el archivo .env
-require('dotenv').config();
+import { PORT } from "./config.js";
 
 // Crear una aplicación Express
 const app = express();
@@ -23,21 +19,23 @@ app.use(json());
 
 // Importar las rutas definidas en el archivo index.js en el directorio routes
 import indexRoutes from "./routes/index.js";
+import UserRoutes from "./routes/users.routes.js";
+import sendMailRoutes from "./routes/sendMail.routes.js";
 
 // Configuración de las rutas y el motor de vistas
 const __dirname = dirname(fileURLToPath(import.meta.url));
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Utilizar las rutas definidas en indexRoutes
+// Utilizar las rutas definidas en la carpeta routes
 app.use(indexRoutes);
+app.use('/api',UserRoutes);
+app.use(sendMailRoutes);
 
 // Middleware para servir archivos estáticos desde el directorio public
 // Estos archivos están disponibles para el cliente sin necesidad de procesamiento adicional del servidor
 app.use(express.static(join(__dirname, 'public')));
 
-// Configuración del puerto para la aplicación Express
-const PORT = process.env.PORT || 3000;
 
 // Iniciar el servidor Express y escuchar en el puerto especificado
 const server = app.listen(PORT, () => {
