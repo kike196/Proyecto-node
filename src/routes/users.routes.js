@@ -4,14 +4,21 @@ import {
   getUsers,
   insertUser,
   updateUser,
+  updateUserPath,
   getUser
 } from "../models/users.model.js";
 
 const router = Router();
 
 router.get("/users", async (req, res) => {
-  const users = await getUsers();
-  res.status(200).json(users);
+  try {
+    const users = await getUsers();
+    res.status(200).json(users);
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Users not found'
+    });
+  };
 });
 
 router.get("/user/:id", async (req, res) => {
@@ -51,7 +58,30 @@ router.put("/users/:id", async (req, res) => {
   if (result.affectedRows === 0)
     return res.status(404).json({ msg: "user not found" });
 
-  return res.json(result);
+  const id = req.params.id;
+  const user = await getUser(id);
+
+  return res.status(200).json(user);
+});
+
+router.patch("/users/:id", async (req, res) => {
+  const userData = {
+    id: req.params.id,
+    name: req.body.name,
+    phone: req.body.phone,
+    email: req.body.email,
+    message: req.body.message
+  };
+
+  const result = await updateUserPath(userData);
+
+  if (result.affectedRows === 0)
+    return res.status(404).json({ msg: "user not found" });
+
+  const id = req.params.id;
+  const user = await getUser(id);
+
+  return res.status(200).json(user);
 });
 
 router.delete("/users/:id", async (req, res) => {
