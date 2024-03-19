@@ -1,12 +1,20 @@
 // Importar módulos necesarios de Express y Node.js
 import express, { json } from "express";
+import Morgan from "morgan";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import keys from './settings/keys.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Crear una aplicación Express
 const app = express();
+
+app.set('key', keys.key);
+
+// Middleware
+
+app.use(Morgan('dev'));
 
 // Middleware para analizar datos de formulario URL-encoded
 // Este middleware permite analizar datos de formularios enviados desde un navegador web
@@ -15,10 +23,11 @@ app.use(express.urlencoded({ extended: false }));
 
 // Middleware para analizar datos JSON
 // Este middleware permite analizar datos JSON enviados al servidor
-app.use(json());
+app.use(express.json())
 
 // Importar las rutas definidas en el archivo index.js en el directorio routes
 import indexRoutes from "./routes/index.js";
+import loginRoutes from "./routes/login.js";
 import UserRoutes from "./routes/users.routes.js";
 import sendMailRoutes from "./routes/sendMail.routes.js";
 
@@ -28,6 +37,7 @@ app.set('view engine', 'ejs');
 
 // Utilizar las rutas definidas en la carpeta routes
 app.use(indexRoutes);
+app.use(loginRoutes);
 app.use('/api',UserRoutes);
 app.use(sendMailRoutes);
 

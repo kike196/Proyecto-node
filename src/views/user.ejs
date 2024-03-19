@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+    <%- include('partials/head.ejs')%>
+</head>
+<body>
+    <%- include('partials/navigation.ejs')%>
+
+
+    <div class="container">
+        <a href="/api/create/user" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
+        <table id="userTable" class="tableUser">
+            <thead>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>message</th>
+                <th>created</th>
+                <th>Edit</th>
+            </thead>
+            <tbody>
+                <% if (user) { %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone %></td>
+                        <td><%= user.message %></td>
+                        <td><%= user.created_at %></td>
+                        <td>
+                            <a href="/api/users" class="btn btn-outline-info"> <i class="fa fa-eye"></i></a>
+                            <a href="/api/user/edit/<%= user.id %>" class="btn btn-outline-info"> <i class="fa fa-edit"></i></a>
+                            <a href="/api/user/delete/<%= user.id %>" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <%- include('partials/footer.ejs')%>
+    
+</body>
+</html>
