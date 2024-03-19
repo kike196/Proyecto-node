@@ -10,36 +10,46 @@ import {
 
 const router = Router();
 
-router.get("/users", async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
     const users = await getUsers();
-    res.status(200).json(users);
+    res.status(200).render('users', {users:users, title: 'Users'});
   } catch (error) {
     return res.status(500).json({
-      message: 'Users not found'
+      message: 'Users not found' 
     });
   };
 });
 
 router.get("/user/:id", async (req, res) => {
   const id = req.params.id;
-  const user = await getUser(id)
-  if (user.affectedRows === 0) return res.status(404).json({ 
-    msg: "user not found" 
-  });
+  const user = await getUser(id);
 
-  return res.status(200).json(user);
+  try {
+    res.render('user', {user:user[0], title: `User ${user[0].name}`} );
+  } catch (error) {
+     return res.status(500).json({
+      message: 'Users not found' 
+    });
+  }
 });
 
-router.post("/users", async (req, res) => {
-  const { name, email} = req.body;
+router.get("/create/user", (req, res) => {
+  res.render('create', { title: 'Create' });
+});
+
+router.post("/create/user", async (req, res) => {
+  const { name, email, phone, message } = req.body;
   const userData = {
     name,
     email,
+    phone,
+    message
   };
+  const result = await insertUser(userData);
   try {
-    const result = await insertUser(userData);
-    return res.json(result);
+    return res.status(200).redirect('/api/users');
+    //return res.json(result);
   } catch (error) {
     return res.status(500).json(error);
   }
@@ -52,7 +62,6 @@ router.put("/users/:id", async (req, res) => {
     phone: req.body.phone,
     email: req.body.email
   };
-
   const result = await updateUser(userData);
 
   if (result.affectedRows === 0)
@@ -64,7 +73,20 @@ router.put("/users/:id", async (req, res) => {
   return res.status(200).json(user);
 });
 
-router.patch("/users/:id", async (req, res) => {
+router.get("/user/edit/:id", async (req, res) => {
+  const id = req.params.id;
+  const user = await getUser(id)
+
+  try {
+    res.render('edit', {user:user[0], title: `edit user ${user[0].name}`});
+  } catch (error) {
+     return res.status(500).json({
+      message: 'Users not found' 
+    });
+  }
+});
+
+router.post("/user/edit/:id", async (req, res) => {
   const userData = {
     id: req.params.id,
     name: req.body.name,
@@ -72,25 +94,20 @@ router.patch("/users/:id", async (req, res) => {
     email: req.body.email,
     message: req.body.message
   };
-
   const result = await updateUserPath(userData);
-
   if (result.affectedRows === 0)
     return res.status(404).json({ msg: "user not found" });
 
-  const id = req.params.id;
-  const user = await getUser(id);
-
-  return res.status(200).json(user);
+  return res.status(200).redirect('/api/users')
 });
 
-router.delete("/users/:id", async (req, res) => {
+router.get("/user/delete/:id", async (req, res) => {
   const id = req.params.id;
-  const result = await deleteUser(id)
+  const result = await deleteUser(id);
   if (result.affectedRows === 0)
     return res.status(404).json({ msg: "user not found" });
 
-  return res.sendStatus(204);
+  return res.status(200).redirect('/api/users')
 });
 
 export default router;

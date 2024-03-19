@@ -40,7 +40,12 @@ body {
 .mobil {
     display: none !important;
 }
-
+tbody, td, tfoot, th, thead, tr {
+    border-width: 1px;
+}
+nav {
+    margin-bottom: 2rem;
+}
 /*Home*/
 
 /*Menu*/
@@ -697,6 +702,7 @@ label{
 .Footer{
 	background-color: #00030f;
 	padding: 4rem 0;
+    margin-top: 2rem;
 }
 .ulFooter{
 	padding-left: 0;
@@ -741,7 +747,7 @@ label{
     width: 170px;
     height: auto;
 }
-.iconoFooter {
+.iconos-social {
     margin-top: 1rem;
     width: 250px;
     text-align: center;
@@ -756,7 +762,7 @@ a.iconFooter {
 .logoWeclick{
     padding-right: 35px;
 }
-.iconoFooter .fa-brands{
+.iconos-social .fa-brands{
     color: #ffffff;
     cursor: pointer;
 }
