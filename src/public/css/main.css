@@ -27,16 +27,39 @@
     font-family: 'RalewayThin';
     src:url(./font/Raleway-Thin.ttf);
 }
+:root {
+    --primary: #f35b5d;
+    --color-letra: #000; /* Color de letra predeterminado */
+    --color-letrab: #fff; /* Color de fondo predeterminado */
+    --color-letrac: #fff;
+    --color-fondo: #f0eeee; /* Color de fondo predeterminado */
+    --color-fondob: #131313;
+    --color-destacado: #ff014e; /* Color destacado predeterminado */
+    --color-hover-boton: #8206d5; /* Color de borde en hover para el botón */
+    --color-destacado-razones: #ff0000; /* Color destacado para las razones */
+    --color-background-verSitio: #910281; /* Color de fondo para el botón 'Ver Sitio' */
+    --color-hover-btn: #dd0646; /* Color de fondo en hover para los botones */
+} 
+:root[data-theme="dark"] {
+    --primary: #f35b5d;
+    --color-letra: #fff;
+    --color-letrab: #000;
+    --color-fondo: #131313;
+    --color-fondob: #f0eeee;
+}
 body {
   margin: 0;
   font-family: 'RalewayMedium', sans-serif !important;
-  color: #000;
+  color: var(--color-letra);
   font-size: 20px;
+  background-color: var(--color-fondo);
 }
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
+button#btn-dark {
+    color: #ff014e;
+}
+button#btn-light {
+    color: #ff0;
+}
 .mobil {
     display: none !important;
 }
@@ -55,7 +78,7 @@ nav {
 .menuInner {
     padding: 2rem 0 10px;
     border-bottom: solid 1px #ff014e;
-    background: #fff;
+    background: var(--color-fondo);
 }
 .menuTop {
     position: relative;
@@ -71,11 +94,11 @@ nav {
     top: 0;
     width: 100%;
     z-index: 20;
-    background: #fff;
+    background: var(--color-fondo);
     padding: 15px 0 1rem;
 }
 .contenedorMenu{
-    background-color: #fff;
+    background-color: var(--color-fondo);
     padding: 15px 0 3rem;
 }
 .imgLogo {
@@ -85,10 +108,10 @@ nav {
 a.navbar-brand {
     font-size: 20px;
     font-weight: 900;
-    color: #fff;
+    color: var(--color-letrac);
 }
 a.nav-link {
-    color: #fff;
+    color: var(--color-letrac);
 }
 a.nav-link:hover {
     color: #0C64E6;
@@ -109,20 +132,20 @@ a.nav-link:hover {
     padding-left: 0;
 }
 #menu a {
-    color: #000;
+    color: var(--color-letra);
     font-size: 20px;
     font-family: 'RalewayExtraBold';
     text-decoration: none;
     margin-left: 2rem;
 }
 .menu a:active, .menu a:hover {
-    color: #000;
+    color: var(--color-letra);
     text-shadow: 1px 0 0 currentColor;
     text-decoration: underline 2px !important;
     text-decoration-color: #ff014e !important;
 }
 a.current {
-    color: #000;
+    color: var(--color-letra);
     font-weight: 700;
 }
 .active-section{
@@ -160,7 +183,7 @@ a.current {
 .contenedorTextBanner{
     position: absolute;
     text-align: center;
-    color: #fff;
+    color: var(--color-letrab);
     height: 100%;
     width: 100%;
     display: flex;
@@ -204,10 +227,10 @@ a.current {
     transition: 2s;
 }
 .btnPrincipal{
-    color: #fff;
+    color: var(--color-letrab);
     font-family: 'RalewayExtraBold';
     text-decoration: none;
-    background-color: #000;
+    background-color: var(--color-letra);
     border: solid 4px #ff0553;
     padding: 0.5rem 2rem;
     font-size: 24px;
@@ -218,13 +241,13 @@ a.current {
     top: 500px;
 }
 .btnPrincipal:hover{
-    border: 4px solid #8206d5;
+    border: 4px solid var(--color-hover-boton);;
     transition: opacity 0.3s, border 0.3s;
 }
 /* Razones */
 .razones {
     padding-top: 2rem;
-    background-color: #fff;
+    background-color: var(--color-fondo);
 }
 .contenedorRazones {
     padding: 1rem 1rem;
@@ -238,7 +261,7 @@ a.current {
     line-height: 1.2;
     text-align: left;
     margin-bottom: 2rem;
-    color: #000;
+    color: var(--color-letra);
     text-align: center;
 }
 .subTituloRazones {
@@ -248,10 +271,10 @@ a.current {
     text-align: left;
     line-height: 1;
     padding-bottom: 1rem;
-    color: #000;
+    color: var(--color-letra);
 }
 .subTituloRazones.borde1 {
-    border-bottom: solid 1px #8206d5;
+    border-bottom: solid 1px var(--color-hover-boton);;
 }
 .subTituloRazones.borde2 {
     border-bottom: solid 1px #ff0553;
@@ -261,10 +284,10 @@ a.current {
     font-size: 20px;
     text-align: left;
     line-height: 1.5;
-    color: #000;
+    color: var(--color-letra);
 }
 .textoRazones span {
-    color: #ff0000;
+    color: var(--color-destacado-razones);;
 }
 .imagenRazones img {
     width: 100%;
@@ -275,7 +298,7 @@ a.current {
     padding: 4rem 0;
 }
 .tittleLocation{
-    color: #000;
+    color: var(--color-letra);
     font-size: 52px;
     font-weight: 900;
     font-family: 'RalewayExtraBold';
@@ -289,7 +312,7 @@ a.current {
     bottom: 0;
 }
 .textLocation{
-    color: #000;
+    color: var(--color-letra);
     font-size: 20px;
     text-align: left;
     padding: 0 5rem;
@@ -299,7 +322,7 @@ a.current {
     padding-bottom: 2rem;
 }
 .tittleService {
-    color: #000;
+    color: var(--color-letra);
     font-size: 52px;
     font-weight: 900;
     font-family: 'RalewayExtraBold';
@@ -313,7 +336,7 @@ a.current {
     text-align: left;
     cursor: pointer;
     border: solid 1px #ff014e;
-    color: #000;
+    color: var(--color-letra);
     transition: 0.5s;
     min-height: 355px;
     font-size: 20px;
@@ -336,7 +359,7 @@ a.current {
     border: solid 1px #337504;
     text-align: center;
     padding: 5px 3rem;
-    color: #fff;
+    color: var(--color-letrab);
     text-decoration: none;
     border-bottom: solid 3px #337504;
 }
@@ -346,7 +369,7 @@ div#seccion-5 .row {
 }
 .tituloSitios {
     font-family: 'RalewayExtraBold';
-    color: #000;
+    color: var(--color-letra);
     font-size: 52px;
     font-weight: 900;
     padding: 2rem 0;
@@ -365,8 +388,8 @@ div#seccion-5 .row {
     box-shadow: 0 14px 28px rgba(0,0,0,.15), 0 10px 10px rgba(0,0,0,.15);
 }
 .verSitio {
-    background-color: #910281;
-    color: #fff;
+    background-color: var(--color-background-verSitio);;
+    color: var(--color-letrab);
     text-align: center;
     font-size: 20px;
     font-weight: 600;
@@ -387,7 +410,7 @@ div#seccion-5 .row {
 .template-scroll {
     display: block;
     text-align: center;
-    color: #fff;
+    color: var(--color-letrab);
     padding-top: 20px;
     width: 100%;
     height: 500px;
@@ -423,7 +446,7 @@ div#seccion-5 .row {
 .plataformas {
     padding: 4rem 0;
     margin-top: 2rem;
-    background-color: #fff;
+    background-color: var(--color-fondo);
 }
 .tituloPlataformas {
     font-family: 'RalewayExtraBold';
@@ -431,7 +454,7 @@ div#seccion-5 .row {
     font-weight: 900;
     text-align: left;
     margin-bottom: 2rem;
-    color: #000;
+    color: var(--color-letra);
 }
 .plataformas img {
     width: 100%;
@@ -445,14 +468,14 @@ div#seccion-5 .row {
 }
 /*formulario*/
 .formulario{
-    color: #000;
+    color: var(--color-letra);
     font-size: 20px;
     font-family: 'RalewayExtraBold';
     padding-top: 4rem;
     padding-bottom: 6rem;
 }
 .tittleFormulario{
-    color: #000;
+    color: var(--color-letra);
     font-size: 52px;
     font-weight: 600;
     font-family: 'RalewayExtraBold';
@@ -467,15 +490,15 @@ div#seccion-5 .row {
     margin: 2rem 0;
     font-size: 20px;
     height: 50px;
-    color: #000;
+    color: var(--color-letra);
 }
 .formulario input:focus-visible, .formulario textarea:focus-visible {
     outline: none;
     border: solid 1px #ff014e;
-    color: #000;
+    color: var(--color-letra);
 }
 .formulario input::placeholder{
-    color: #000;
+    color: var(--color-letra);
 }
 .formulario select{
     width: 100%;
@@ -486,7 +509,7 @@ div#seccion-5 .row {
     margin: 2rem 0;
     font-size: 20px;
     height: 50px;
-    color: #000;
+    color: var(--color-letra);
     -webkit-appearance: none;
     -moz-appearance: none;
     background-image: url(../images/iconos/flechaAbajoGris.png);
@@ -507,7 +530,7 @@ textarea {
     border: none;
     border: solid 1px #ff014e;
     font-size: 20px;
-    color: #000;
+    color: var(--color-letra);
     font-family: 'RalewayMedium';
 }
 textarea#formregistro-comentario {
@@ -527,7 +550,7 @@ textarea#success {
     border: none;
     border: solid 1px #ff014e;
     font-size: 20px;
-    color: #000;
+    color: var(--color-letra);
     font-family: 'RalewayMedium';
 }
 .contenedorBoton {
@@ -535,9 +558,9 @@ textarea#success {
     text-align: right;
 }
 .contenedorBoton button {
-    background-color: #ff014e;
+    background-color: var(--color-destacado);
     font-family: 'RalewayExtraBold';
-    color: #fff;
+    color: var(--color-letrab);
     border: none;
     border-radius: 0;
     font-size: 20px;
@@ -551,20 +574,20 @@ textarea#success {
 }
 
 .contenedorBoton button:hover{
-    background-color: #dd0646;
+    background-color: var(--color-hover-btn);;
 }
 
 .contenedorBoton button:disabled {
-    background-color: #ff014e; /* Cambia el color de fondo cuando está deshabilitado */
+    background-color: var(--color-destacado); /* Cambia el color de fondo cuando está deshabilitado */
     cursor: not-allowed; /* Cambia el cursor cuando se pasa sobre el botón */
     opacity: 0.6; /* Cambia la opacidad del botón */
 }
 
 button.ajs-button.ajs-ok {
-    background-color: #ff014e;
+    background-color: var(--color-destacado);
     border-radius: 5px;
     color: #ffffff;
-    border-color: #ff014e;
+    border-color: var(--color-destacado);
 }
 
 label{
@@ -607,11 +630,11 @@ label{
 }
 /* On mouse-over, add a grey background color */
 .AvisoLegal:hover input ~ .checkmark {
-    background-color: #ff014e;
+    background-color: var(--color-destacado);
 }
 /* When the checkbox is checked, add a blue background */
 .AvisoLegal input:checked ~ .checkmark {
-    background-color: #ff014e;
+    background-color: var(--color-destacado);
 }
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
@@ -636,7 +659,7 @@ label{
     transform: rotate(45deg);
 }
 .aviso{
-    color: #fff;
+    color: var(--color-letrab);
     text-decoration: none;
     font-family: 'Raleway';
 }
@@ -658,7 +681,7 @@ label{
 .popup {
     margin: 70px auto;
     padding: 40px;
-    background: #fff;
+    background: var(--color-fondo);
     border-radius: 5px;
     width: 40%;
     position: relative;
@@ -672,10 +695,10 @@ label{
     font-size: 40px;
     font-weight: bold;
     text-decoration: none;
-    color: #000;
+    color: var(--color-letra);
 }
 .popup .close:hover {
-    color: #ff014e;
+    color: var(--color-destacado);
 }
 .popup .content {
     max-height: 30%;
@@ -692,8 +715,8 @@ label{
 .popup.alert.alert-success.alert-dismissible.fade.show {
     font-weight: bold;
     text-decoration: none;
-    color: #000;
-    background: #fff;
+    color: var(--color-letra);
+    background: var(--color-fondo);
     box-shadow: 0 14px 28px rgba(0,0,0,.15), 0 10px 10px rgba(0,0,0,.15);
 }
   
@@ -709,7 +732,7 @@ label{
 	list-style: none;
 }
 .ulFooter li{
-	color: #fff;
+	color: var(--color-letrac);
     font-size: 20px;
 	margin-bottom: 15px;
 	display: flex;
@@ -721,7 +744,7 @@ label{
     margin-bottom: 5rem !important;
 }
 .Footer #menu a {
-    color: #fff;
+    color: var(--color-letrab);
 }
 .itemFooter{
 	width: 30px ;
@@ -771,7 +794,7 @@ a.iconFooter {
 	height: auto;
 }
 .derechos{
-    color: #fff;
+    color: var(--color-letrab);
     margin-top: 3rem;
 }
 .derechos span {
@@ -1323,7 +1346,7 @@ a.iconFooter {
         justify-content: center;
     }
     #menu2 a {
-        color: #fff;
+        color: var(--color-letrab);
         display: flex;
         flex-direction: row;
         list-style: none;

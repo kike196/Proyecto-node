@@ -63,7 +63,7 @@ export const createUser = async (req, res) => {
 
     // Si todos los campos son válidos, enviar el correo electrónico
     try {
-        //await sendEmail(name, email, phone, message);
+        await sendEmail(name, email, phone, message);
         await insertUser(userData);
         return res.status(200).redirect('/contact?success=true');
     } catch (error) {
