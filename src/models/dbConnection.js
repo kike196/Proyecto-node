@@ -7,3 +7,13 @@ export const pool = createPool({
   password: DB_PASSWORD,
   database: DB_DATABASE,
 });
+
+pool.getConnection()
+  .then((connection) => {
+    console.log('Conexión exitosa a la base de datos');
+    // Si la conexión es exitosa, libera la conexión inmediatamente
+    connection.release();
+  })
+  .catch((error) => {
+    console.error('Error al conectar a la base de datos:', error.message);
+  });

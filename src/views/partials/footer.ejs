@@ -62,3 +62,31 @@
 <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"></script> 
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+   this.init();
+
+    function init() {
+    var tema = localStorage.getItem("tema");
+    this.cambiarTema(tema);
+    }
+
+    function cambiarTema(tema) {
+        switch (tema) {
+            case "dark":
+            localStorage.setItem("tema", 'dark');
+            document.getElementById("btn-dark").style.display = "none";
+            document.getElementById("btn-light").style.display = "block";
+            document.documentElement.setAttribute("data-theme", "dark");      
+            break;
+            default:
+            localStorage.setItem("tema", 'light');
+            document.getElementById("btn-dark").style.display = "block";
+            document.getElementById("btn-light").style.display = "none";
+            document.documentElement.setAttribute("data-theme", "light");      
+            break;
+        }
+    }
+</script>
