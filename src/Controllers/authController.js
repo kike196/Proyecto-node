@@ -88,6 +88,22 @@ export const isAuthenticated = async (req, res, next) => {
     }
 };
 
+export const isLogged = async (req, res, next) => {
+    if (req.cookies.jwt) {
+        try {
+            const decodificada = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
+            const [results] = await pool.query('SELECT * FROM users2 WHERE id = ?', [decodificada.id]);
+            if (!results) { return next(); }
+            req.user = results[0];
+            return next();
+        } catch (error) {
+            console.log(error);
+            return next();
+        }
+    } else {
+        return next();  
+    }
+};
 
 export const logout = (req, res) => {
     res.clearCookie('jwt');   
