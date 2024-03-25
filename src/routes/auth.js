@@ -8,10 +8,10 @@ router.get('/dashboard', authController.isAuthenticated, (req, res) => {
     res.render('dashboard', {user:req.user, title: `Dashboard ${req.user.name}` });
 });
 router.get('/login', (req, res) => {
-    res.render('login', {alert:false});
+    res.render('login', {alert:false, title: 'Login'});
 });
 router.get('/register', (req, res) => {
-    res.render('register');
+    res.render('register', {title: 'Register'});
 });
 
 
