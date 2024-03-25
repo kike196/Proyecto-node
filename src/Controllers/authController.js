@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
-import { pool } from '../models/dbConnection.js';
+import { pool } from '../repositories/dbConnection.js';
 
 //procedimiento para registrarnos
 export const register = async (req, res) => {    
@@ -28,7 +28,8 @@ export const login = async (req, res) => {
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login'
+                ruta: 'login',
+                title: 'Login'
             });
         }
 
@@ -41,7 +42,8 @@ export const login = async (req, res) => {
                 alertIcon: 'error',
                 showConfirmButton: true,
                 timer: false,
-                ruta: 'login'    
+                ruta: 'login',
+                title: 'Login'
             });
         }
 
@@ -64,7 +66,8 @@ export const login = async (req, res) => {
             alertIcon: 'success',
             showConfirmButton: false,
             timer: 800,
-            ruta: 'dashboard'
+            ruta: 'dashboard',
+            title: 'Login'
         });
     } catch (error) {
         console.log(error);

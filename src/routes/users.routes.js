@@ -6,7 +6,7 @@ import {
   updateUser,
   updateUserPath,
   getUser
-} from "../models/users.model.js";
+} from "../repositories/users.model.js";
 
 import * as authController from '../Controllers/authController.js';
 

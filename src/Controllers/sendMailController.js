@@ -2,7 +2,7 @@ import { sendEmail } from "../helpers/mailer.js";
 import {
     getUsers,
     insertUser,
-} from "../models/users.model.js";
+} from "../repositories/users.model.js";
 
 export const createUser = async (req, res) => {
     const { name, email, phone, message, 'g-recaptcha-response': grecaptcha } = req.body;
