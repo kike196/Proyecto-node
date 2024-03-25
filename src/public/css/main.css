@@ -105,6 +105,10 @@ nav {
     width: 100px;
     height: auto;
 }
+.navbar-nav .nav-link.active {
+    color: #ff0000; /* Cambia el color del texto del enlace activo */
+    font-weight: bold;
+}  
 a.navbar-brand {
     font-size: 20px;
     font-weight: 900;
@@ -1174,6 +1178,17 @@ a.iconFooter {
     /*Responsive menu*/
     .contenedorMenu {
         padding: 15px 0 0rem;
+    }
+    a.navbar-brand {
+        text-align: center;
+        width: 100%;
+    }
+    li.nav-item {
+      margin-top: 1rem;
+      border-bottom: 1px solid;
+    }
+    li#logoutNavItem {
+        border: none;
     }
     .checkFalso{
         display: block;

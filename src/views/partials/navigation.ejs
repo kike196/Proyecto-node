@@ -25,10 +25,10 @@
           </a>
       </div>
       <div class="cambiar-tema">
-        <button id="btn-dark" type="button" class="btn icon" value="dark" onclick="cambiarTema(this.value)" alt="Day">
+        <button id="btn-dark" style="display: none;" type="button" class="btn icon" value="dark" onclick="cambiarTema(this.value)" alt="Day">
             <i class="fas fa-moon" alt="Day"></i>
         </button>
-        <button id="btn-light" type="button" class="btn icon" value="light" onclick="cambiarTema(this.value)" alt="Night">
+        <button id="btn-light" style="display: none;" type="button" class="btn icon" value="light" onclick="cambiarTema(this.value)" alt="Night">
             <i class="fas fa-sun" alt="Night"></i>
         </button>
       </div>
@@ -47,10 +47,66 @@
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact</a>
         </li>
-        <li class="nav-item">
+        <li id="login-link" class="nav-item" style="display: none;">
           <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li id="dashboard-link" class="nav-item" style="display: none;">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item" id="loginNavItem">
+          <!-- Contenido se agregará aquí dinámicamente -->
+        </li>
+        <li class="nav-item" id="logoutNavItem">
+          <!-- Contenido se agregará aquí dinámicamente -->
         </li>
       </ul>
     </div>
   </div>
 </nav> 
+
+<script>
+   // Realizar una solicitud GET al servidor para verificar el estado de autenticación del usuario
+   fetch('/check-authentication')
+     .then(response => {
+       // Verificar el código de estado de la respuesta
+       if (response.ok) {
+         // Si la respuesta es exitosa, el usuario está autenticado
+         //console.log('Usuario autenticado');
+         loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Dashboard</a>';
+         logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="logout">Logout</a>';
+       } else {
+         // Si la respuesta no es exitosa, el usuario no está autenticado
+         //console.log('Usuario no autenticado');
+         loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
+       }
+     })
+     .catch(error => {
+       // Manejar errores de la solicitud
+       console.error('Error al verificar autenticación:', error);
+     });
+</script>
+ 
+<script>
+  // Función para agregar la clase activa al enlace de navegación correspondiente a la vista actual
+  function marcarVistaActual() {
+    // Obtiene la URL actual
+    var urlActual = window.location.pathname;
+
+    // Selecciona todos los enlaces de navegación
+    var enlacesNav = document.querySelectorAll('.navbar-nav .nav-link');
+
+    // Itera sobre los enlaces de navegación
+    enlacesNav.forEach(function(enlace) {
+      // Verifica si la URL del enlace coincide con la URL actual
+      if (enlace.getAttribute('href') === urlActual) {
+        // Agrega la clase activa al enlace correspondiente a la vista actual
+        enlace.classList.add('active');
+      }
+    });
+  }
+
+  // Llama a la función para marcar la vista actual cuando se carga la página
+  window.addEventListener('DOMContentLoaded', marcarVistaActual);
+</script>
+
+

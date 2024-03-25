@@ -8,7 +8,11 @@ import {
   getUser
 } from "../models/users.model.js";
 
+import * as authController from '../Controllers/authController.js';
+
 const router = Router();
+
+router.use(authController.isAuthenticated);
 
 router.get('/users', async (req, res) => {
   try {
