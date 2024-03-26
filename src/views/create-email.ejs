@@ -16,8 +16,8 @@
                 <h3>Contact me</h3>
             </div>
             <div class="card-body">
-                <form action="/api/create/user" method="POST">
-                    <div class="mb-3">
+                <form action="/create/email" method="POST">
+                    <!-- <div class="mb-3">
                         <label for="name">name</label>
                         <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
                     </div>
@@ -28,18 +28,31 @@
                     <div class="mb-3">
                         <label for="phone">Phone</label>
                         <input type="text" name="phone" placeholder="Phone" class="form-control">
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="message">message</label>
                         <textarea name="message" rows="3" class="form-control" placeholder="Write a Message"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    <button type="submit" class="btn btn-primary btn-block">Send</button>
                 </form>
             </div>
         </div>
     </div>
 
     <%- include('partials/footer.ejs')%>
+    <% if(alert) { %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %>,
+            timer: <%= timer %>
+          }).then(()=>{
+            window.location = '/<%= ruta %>'
+          })
+        </script>
+    <% } %>
     
 </body>
 </html>

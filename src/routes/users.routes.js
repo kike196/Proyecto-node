@@ -12,7 +12,7 @@ import * as authController from '../Controllers/authController.js';
 
 const router = Router();
 
-router.use(authController.isAuthenticated);
+router.use(authController.isAuthenticated, authController.isAdmin);
 
 router.get('/users', async (req, res) => {
   try {
@@ -35,27 +35,6 @@ router.get("/user/:id", async (req, res) => {
      return res.status(500).json({
       message: 'Users not found' 
     });
-  }
-});
-
-router.get("/create/user", (req, res) => {
-  res.render('create', { title: 'Create' });
-});
-
-router.post("/create/user", async (req, res) => {
-  const { name, email, phone, message } = req.body;
-  const userData = {
-    name,
-    email,
-    phone,
-    message
-  };
-  const result = await insertUser(userData);
-  try {
-    return res.status(200).redirect('/api/users');
-    //return res.json(result);
-  } catch (error) {
-    return res.status(500).json(error);
   }
 });
 

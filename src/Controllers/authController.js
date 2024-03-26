@@ -5,12 +5,33 @@ import { pool } from '../repositories/dbConnection.js';
 //procedimiento para registrarnos
 export const register = async (req, res) => {    
     try {
-        const { name, user, pass } = req.body;
+        const { name, user, email, phone, pass, confirmPass } = req.body;
         const rol = 'user';
+        if (pass !== confirmPass) {
+            return res.status(400).render( 'register', {  
+                alert: true,
+                alertTitle: "Advertencia",
+                alertMessage: "Las contraseñas no coinciden",
+                alertIcon: 'info',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'Register' 
+            });
+        }
         const passHash = await bcryptjs.hash(pass, 8);
         
-        await pool.query('INSERT INTO users2 SET ?', { user, name, pass: passHash, rol });
-        res.redirect('/');
+        await pool.query('INSERT INTO users2 SET ?', { user, name, email, phone, pass: passHash, rol });
+        res.status(200).render( 'index', {  
+            alert: true,
+            alertTitle: "Advertencia",
+            alertMessage: "Las contraseñas no coinciden",
+            alertIcon: 'success',
+            showConfirmButton: false,
+            timer: 800,
+            ruta: '',
+            title: 'Home' 
+        });
     } catch (error) {
         console.log(error);
     }       
@@ -67,7 +88,7 @@ export const login = async (req, res) => {
             showConfirmButton: false,
             timer: 800,
             ruta: 'dashboard',
-            title: 'Login'
+            title: 'dashboard'
         });
     } catch (error) {
         console.log(error);
@@ -79,15 +100,34 @@ export const isAuthenticated = async (req, res, next) => {
         try {
             const decodificada = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
             const [results] = await pool.query('SELECT * FROM users2 WHERE id = ?', [decodificada.id]);
-            if (!results) { return next(); }
+            if (!results) { 
+                return res.redirect('/login');
+            }
+
             req.user = results[0];
-            return next();
+
+            if (req.user.rol === 'Admin' || req.user.rol === 'admin') {
+                return next();
+            } else if (req.user.rol === 'user') {
+                return next();
+            } else {
+                return res.redirect('/login');
+            }
         } catch (error) {
             console.log(error);
-            return next();
+            return res.redirect('/login');
         }
     } else {
-        res.redirect('/login');        
+        return res.redirect('/login');
+    }
+};
+
+export const isAdmin = (req, res, next) => {
+    if (req.user && (req.user.rol === 'Admin' || req.user.rol === 'admin')) {
+      return next();
+    } else {
+        return res.status(403).redirect('/');
+      //return res.status(403).json({ message: 'Acceso prohibido' }); 
     }
 };
 

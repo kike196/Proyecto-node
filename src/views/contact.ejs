@@ -42,32 +42,19 @@
 
     <%- include('partials/footer.ejs')%>
 
-    <script>
-        // Función para obtener parámetros de la URL
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        };
-    
-        // Obtener el parámetro 'success' de la URL
-        var successParam = getUrlParameter('success');
-    
-        // Mostrar mensaje de éxito si 'success' es 'true'
-        if (successParam === 'true') {
-            alert('El correo se ha enviado exitosamente.');
-        }
-    
-        // Obtener el parámetro 'error' de la URL
-        var errorParam = getUrlParameter('error');
-    
-        // Mostrar mensaje de error si 'error' no está vacío
-        if (errorParam !== '') {
-            // Personalizar el mensaje de alerta con el contenido del parámetro 'error'
-            alert('Error: ' + errorParam);
-        }
-    </script>
+    <% if(alert) { %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %>,
+            timer: <%= timer %>
+          }).then(()=>{
+            window.location = '/<%= ruta %>'
+          })
+        </script>
+    <% } %>
     
 </body>
 </html>

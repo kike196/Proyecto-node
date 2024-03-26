@@ -7,13 +7,6 @@
     <!-- Bootstrap CSS -->
     <%- include('partials/head.ejs')%>
     <link href="css/styles.css" rel="stylesheet">
-    <style>
-    body {  
-      /* display: flex; */
-      align-items: center;
-      background-color:rgba(255,255,255,0.95);
-    }
-    </style>
     <title><%= title%></title>
   </head>
   <body>
@@ -29,20 +22,32 @@
               <div class="card-body text-primary">
                 <form action="/register" method="POST">        
                   <div class="mb-3">
-                      <label for="name" class="form-label">Nombre completo</label>
-                      <input id="name" name="name" type="text" class="form-control" aria-describedby="emailHelp">              
+                    <label for="name" class="form-label">Nombre completo</label>
+                    <input id="name" name="name" type="text"  placeholder="Name" class="form-control" aria-describedby="emailHelp">              
                   </div>
                   <div class="mb-3">
-                      <label for="user" class="form-label">Cuenta de usuario</label>
-                      <input id="user" name="user" type="text" class="form-control">
+                    <label for="user" class="form-label">Cuenta de usuario</label>
+                    <input id="user" name="user" type="text"  placeholder="User" class="form-control">
                   </div>
                   <div class="mb-3">
-                      <label for="pass" class="form-label">Password</label>
-                      <input id="pass" name="pass" type="password" class="form-control">
-                  </div>                            
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="Email" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" placeholder="Phone" class="form-control">
+                  </div>
+                  <div class="mb-3">
+                    <label for="pass" class="form-label">Password</label>
+                    <input id="pass" name="pass" type="password" placeholder="Password" class="form-control">
+                  </div>   
+                  <div class="mb-3">
+                    <label for="confirmPass" class="form-label">Confirmar Password</label>
+                    <input id="confirmPass" name="confirmPass" type="password" placeholder="Confirmar Password" class="form-control">
+                  </div>                                         
               </div>
               <div class="card-footer bg-transparent border-primary">
-                <a href="/" type="button" class="btn btn-secondary">Cancelar</a>
+                <a href="/login" type="button" class="btn btn-secondary">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Registrar</button>
               </div>
               </form>
@@ -54,5 +59,19 @@
 
  
   <%- include('partials/footer.ejs')%>
+  <% if(alert) { %>
+    <script>
+      Swal.fire({
+        title: '<%= alertTitle %>',
+        text:'<%= alertMessage %>',
+        icon:'<%= alertIcon %>',
+        showConfirmButton: <%= showConfirmButton %>,
+        timer: <%= timer %>
+      }).then(()=>{
+        window.location = '/<%= ruta %>'
+      })
+    </script>
+  <% } %>
+
   </body>
 </html>
