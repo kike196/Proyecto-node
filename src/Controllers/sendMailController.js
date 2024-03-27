@@ -1,8 +1,8 @@
 import { sendEmail } from "../helpers/mailer.js";
 import {
-    getUsers,
-    insertUser,
-} from "../repositories/users.model.js";
+    getMessages,
+    insertMessage,
+} from "../repositories/message.model.js";
 
 export const createEmail = async (req, res) => {
     const { name, email, phone, message, 'g-recaptcha-response': grecaptcha } = req.body;
@@ -13,7 +13,7 @@ export const createEmail = async (req, res) => {
         message
     };
     // Obtener la lista de usuarios desde la base de datos
-    const users = await getUsers();
+    const users = await getMessages();
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${grecaptcha}`, {
@@ -126,7 +126,7 @@ export const createEmail = async (req, res) => {
 
     // Si todos los campos son válidos, enviar el correo electrónico
     try {
-        await insertUser(userData);
+        await insertMessage(userData);
         await sendEmail(name, email, phone, message);
         return res.status(200).render('contact', {
             alert: true,

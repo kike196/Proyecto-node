@@ -61,7 +61,7 @@ router.get("/user/edit/:id", async (req, res) => {
   const user = await getUser(id)
 
   try {
-    res.render('edit', {user:user[0], title: `edit user ${user[0].name}`});
+    res.render('editUsers', {user:user[0], title: `edit user ${user[0].name}`});
   } catch (error) {
      return res.status(500).json({
       message: 'Users not found' 
@@ -73,9 +73,10 @@ router.post("/user/edit/:id", async (req, res) => {
   const userData = {
     id: req.params.id,
     name: req.body.name,
+    user: req.body.user,
     phone: req.body.phone,
     email: req.body.email,
-    message: req.body.message
+    rol: req.body.rol
   };
   const result = await updateUserPath(userData);
   if (result.affectedRows === 0)

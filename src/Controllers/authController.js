@@ -21,7 +21,7 @@ export const register = async (req, res) => {
         }
         const passHash = await bcryptjs.hash(pass, 8);
         
-        await pool.query('INSERT INTO users2 SET ?', { user, name, email, phone, pass: passHash, rol });
+        await pool.query('INSERT INTO users SET ?', { user, name, email, phone, pass: passHash, rol });
         res.status(200).render( 'index', {  
             alert: true,
             alertTitle: "Advertencia",
@@ -54,7 +54,7 @@ export const login = async (req, res) => {
             });
         }
 
-        const [results] = await pool.query('SELECT * FROM users2 WHERE user = ?', [user]);
+        const [results] = await pool.query('SELECT * FROM users WHERE user = ?', [user]);
         if (results.length === 0 || !(await bcryptjs.compare(pass, results[0].pass))) {
             return res.render('login', {
                 alert: true,
@@ -99,7 +99,7 @@ export const isAuthenticated = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             const decodificada = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
-            const [results] = await pool.query('SELECT * FROM users2 WHERE id = ?', [decodificada.id]);
+            const [results] = await pool.query('SELECT * FROM users WHERE id = ?', [decodificada.id]);
             if (!results) { 
                 return res.redirect('/login');
             }
@@ -135,7 +135,7 @@ export const isLogged = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             const decodificada = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
-            const [results] = await pool.query('SELECT * FROM users2 WHERE id = ?', [decodificada.id]);
+            const [results] = await pool.query('SELECT * FROM users WHERE id = ?', [decodificada.id]);
             if (!results) { return next(); }
             req.user = results[0];
             return next();

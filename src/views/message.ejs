@@ -11,15 +11,14 @@
 
 
     <div class="container">
-        <a href="/api/create/user" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
+        <a href="/api/create/message" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
         <table id="userTable" class="tableUser">
             <thead>
                 <th>id</th>
-                <th>User</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Rol</th>
+                <th>Message</th>
                 <th>Created</th>
                 <th>Edit</th>
             </thead>
@@ -27,16 +26,15 @@
                 <% if (user) { %>
                     <tr>
                         <td><%= user.id %></td>
-                        <td><%= user.user %></td>
                         <td><%= user.name %></td>
                         <td><%= user.email %></td>
                         <td><%= user.phone %></td>
-                        <td><%= user.rol %></td>
+                        <td><%= user.message %></td>
                         <td><%= user.created_at %></td>
                         <td>
-                            <a href="/api/users" class="btn btn-outline-info"> <i class="fa fa-eye"></i></a>
-                            <a href="/api/user/edit/<%= user.id %>" class="btn btn-outline-info"> <i class="fa fa-edit"></i></a>
-                            <a href="/api/user/delete/<%= user.id %>" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+                            <a href="/messages" class="btn btn-outline-info"> <i class="fa fa-eye"></i></a>
+                            <a href="/message/edit/<%= user.id %>" class="btn btn-outline-info"> <i class="fa fa-edit"></i></a>
+                            <a href="/message/delete/<%= user.id %>" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 <% } %>

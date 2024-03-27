@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+    <%- include('partials/head.ejs')%>
+</head>
+<body>
+
+    <%- include('partials/navigation.ejs')%>
+    
+    <% if (user) { %>
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="card">
+            <div class="card-header">
+                <h3>Edit user <%= user.name %></h3>
+            </div>
+            <div class="card-body">
+                <form action="/api/user/edit/<%= user.id %>" method="POST">
+                    <input id="id" name="id" value="<%= user.id %>" type="text" hidden>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre completo</label>
+                        <input id="name" name="name" type="text"  placeholder="Name" class="form-control" autofocus value="<%= user.name %>">   
+                    </div>
+                    <div class="mb-3">
+                      <label for="user" class="form-label">Nombre de usuario</label>
+                      <input id="user" name="user" type="text"  placeholder="User" class="form-control" value="<%= user.user %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" placeholder="Email" class="form-control" value="<%= user.email %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone">Phone</label>
+                        <input type="text" name="phone" placeholder="Phone" class="form-control" value="<%= user.phone %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="rol">Rol</label>
+                        <select name="rol" id="rol" class="select-css" value="<%= user.user %>">
+                            <option value="admin">Admin</option>
+                            <option value="user">user</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    <a href="/api/users" type="button" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } %>
+
+    <%- include('partials/footer.ejs')%>
+    
+</body>
+</html>
