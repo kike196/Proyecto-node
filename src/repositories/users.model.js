@@ -35,7 +35,7 @@ export const updateUserPath = async (userData) => {
   const sql = `
       UPDATE users SET
       name = IFNULL(${pool.escape(userData.name)}, name),
-      name = IFNULL(${pool.escape(userData.user)}, user),
+      user = IFNULL(${pool.escape(userData.user)}, user),
       phone = IFNULL(${pool.escape(userData.phone)}, phone),
       email = IFNULL(${pool.escape(userData.email)}, email),
       rol = IFNULL(${pool.escape(userData.rol)}, rol)

@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
 import { pool } from '../repositories/dbConnection.js';
+import * as usersModel from "../repositories/users.model.js";
 
 //procedimiento para registrarnos
 export const register = async (req, res) => {    
     try {
-        const { name, user, email, phone, pass, confirmPass } = req.body;
+        const { name, user, email, phone, pass, confirmPass, 'g-recaptcha-response': grecaptcha  } = req.body;
         const rol = 'user';
         if (pass !== confirmPass) {
             return res.status(400).render( 'register', {  
@@ -20,18 +21,162 @@ export const register = async (req, res) => {
             });
         }
         const passHash = await bcryptjs.hash(pass, 8);
-        
-        await pool.query('INSERT INTO users SET ?', { user, name, email, phone, pass: passHash, rol });
-        res.status(200).render( 'index', {  
-            alert: true,
-            alertTitle: "Advertencia",
-            alertMessage: "Las contraseñas no coinciden",
-            alertIcon: 'success',
-            showConfirmButton: false,
-            timer: 800,
-            ruta: '',
-            title: 'Home' 
+
+        const userData = { user, name, email, phone, pass: passHash, rol }
+
+        // Obtener desde la base de datos la lista de usuarios
+        const users = await usersModel.getUsers();
+
+        const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+        const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${grecaptcha}`, {
+            method: 'POST'
         });
+        const data = await response.json();
+
+        // Validar que todos los campos obligatorios estén presentes
+        if (!user || !name || !email || !phone || !pass) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Todos los campos son obligatorios.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        // Verificar si algún usuario ya tiene el correo electrónico proporcionado
+        const userAlreadyExists = users.some(existingUser => existingUser.user === user);
+        if (userAlreadyExists) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Ya ese nombre de usuario esta registrado.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        // Validar el formato del correo electrónico con regular expression
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Por favor, proporcione un correo electrónico válido.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        // Verificar si algún usuario ya tiene el correo electrónico proporcionado
+        const emailAlreadyExists = users.some(user => user.email === email);
+        if (emailAlreadyExists) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Ya ese correo electrónico esta registrado.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+        
+        // Si se proporciona un número de teléfono, validar su formato con regular expression
+        if (phone) {
+            const phoneRegex = /^(\+?\d{1,3}\s?)?((\(\d{2,5}\))|\d{2,5})[-.\s]?\d{2,5}[-.\s]?\d{2,5}[-.\s]?\d{2,5}$/;
+            if (!phoneRegex.test(phone)) {
+                return res.status(400).render('register', {
+                    alert: true,
+                    alertTitle: "Error",
+                    alertMessage: "Por favor, proporcione un número de teléfono válido.",
+                    alertIcon: 'error',
+                    showConfirmButton: true,
+                    timer: false,
+                    ruta: 'register',
+                    title: 'register'
+                });
+            }
+        }
+
+        // Verificar si algún usuario ya tiene el número de teléfono proporcionado
+        const phoneAlreadyExists = users.some(user => user.phone === phone);
+        if (phoneAlreadyExists) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Ya ese número de teléfono esta registrado.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        // Validar reCAPTCHA
+        if (!grecaptcha) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Por favor, complete el reCAPTCHA.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        if (!data.success) {
+            return res.status(400).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "Error en la validación de reCAPTCHA.",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+
+        try {
+            await usersModel.insertUser(userData);
+            return res.status(200).render( 'login', {  
+                alert: true,
+                alertTitle: "Bienvenido",
+                alertMessage: "¡Cuenta creada exitosamente!",
+                alertIcon: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+                ruta: 'login',
+                title: 'login' 
+            });
+        } catch (error) {
+            console.error('Error al registrarse:', error);
+            return res.status(500).render('register', {
+                alert: true,
+                alertTitle: "Error",
+                alertMessage: "¡Hubo un error al registrar el usuario!",
+                alertIcon: 'error',
+                showConfirmButton: true,
+                timer: false,
+                ruta: 'register',
+                title: 'register'
+            });
+        }
+        
     } catch (error) {
         console.log(error);
     }       

@@ -17,7 +17,7 @@
                 <h3>Edit user <%= user.name %></h3>
             </div>
             <div class="card-body">
-                <form action="/api/message/edit/<%= user.id %>" method="POST">
+                <form action="/message/edit/<%= user.id %>" method="POST">
                     <input id="id" name="id" value="<%= user.id %>" type="text" hidden>
                     <div class="mb-3">
                         <label for="name">name</label>

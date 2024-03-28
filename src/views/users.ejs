@@ -10,7 +10,7 @@
     <%- include('partials/navigation.ejs')%>
     
     <div class="container">
-        <a href="/api/create/user" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
+        <a href="/register" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
         <table id="userTable" class="tableUser">
             <thead>
                 <th>id</th>
@@ -44,6 +44,19 @@
     </div>
 
     <%- include('partials/footer.ejs')%>
+    <% if(alert) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text:'<%= alertMessage %>',
+          icon:'<%= alertIcon %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        }).then(()=>{
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %>
 
     <script>
         $(document).ready(function() {

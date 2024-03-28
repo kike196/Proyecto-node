@@ -12,7 +12,7 @@ export const createEmail = async (req, res) => {
         phone,
         message
     };
-    // Obtener la lista de usuarios desde la base de datos
+    // Obtener desde la base de datos la lista de usuarios que han mandado mensajes en contact 
     const users = await getMessages();
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
@@ -134,12 +134,21 @@ export const createEmail = async (req, res) => {
             alertMessage: "¡Mensaje enviado correctamente!",
             alertIcon: 'success',
             showConfirmButton: false,
-            timer: 800,
+            timer: 1500,
             ruta: 'contact',
             title: 'contact'
         });
     } catch (error) {
         console.error('Error al enviar el correo o insertar usuario:', error);
-        return res.status(500).json({ error: 'Hubo un error al procesar su solicitud. Por favor, inténtelo de nuevo más tarde.' });
+        return res.status(500).render('contact', {
+            alert: true,
+            alertTitle: "Error",
+            alertMessage: "¡Hubo un error al enviar el mensaje!",
+            alertIcon: 'error',
+            showConfirmButton: true,
+            timer: false,
+            ruta: 'contact',
+            title: 'contact'
+        });
     }
 }

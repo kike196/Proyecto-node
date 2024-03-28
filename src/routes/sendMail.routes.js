@@ -39,7 +39,7 @@ router.post("/create/email", authController.isAuthenticated, async (req, res) =>
 router.get('/messages', authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     try {
       const users = await message.getMessages();
-      res.status(200).render('messages', {users:users, title: 'Messages'});
+      res.status(200).render('messages', { alert:false, users:users, title: 'Messages'});
     } catch (error) {
       return res.status(500).json({
         message: 'Messages not found' 
@@ -52,7 +52,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
     const user = await message.getMessage(id);
   
     try {
-      res.render('message', {user:user[0], title: `User ${user[0].name}`} );
+      res.render('message', { alert:false, user:user[0], title: `User ${user[0].name}`} );
     } catch (error) {
        return res.status(500).json({
         message: 'Messages not found' 
@@ -92,6 +92,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
   });
   
   router.post("/message/edit/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
+    const users = await message.getMessages();
     const userData = {
       id: req.params.id,
       name: req.body.name,
@@ -103,7 +104,17 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
     if (result.affectedRows === 0)
       return res.status(404).json({ msg: "user not found" });
   
-    return res.status(200).redirect('/api/messages')
+    return res.status(200).render('messages', 
+    { alert: true,
+      alertTitle: "Completado",
+      alertMessage: "¡Usuario modificado exitosamente!",
+      alertIcon: 'success',
+      showConfirmButton: false,
+      timer: 1500,
+      ruta: 'messages',
+      title: 'Messages',
+      users:users
+    });
   });
   
   router.get("/message/delete/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {

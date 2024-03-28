@@ -11,7 +11,7 @@
 
 
     <div class="container">
-        <a href="/api/create/message" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
+        <a href="/create/email" class="btn btn-outline-info"> Create <i class="fa fa-plus"></i></a>
         <table id="userTable" class="tableUser">
             <thead>
                 <th>id</th>
@@ -43,6 +43,19 @@
     </div>
 
     <%- include('partials/footer.ejs')%>
+    <% if(alert) { %>
+      <script>
+        Swal.fire({
+          title: '<%= alertTitle %>',
+          text:'<%= alertMessage %>',
+          icon:'<%= alertIcon %>',
+          showConfirmButton: <%= showConfirmButton %>,
+          timer: <%= timer %>
+        }).then(()=>{
+          window.location = '/<%= ruta %>'
+        })
+      </script>
+    <% } %>
     
 </body>
 </html>
