@@ -39,19 +39,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
+          <a class="nav-link" href="/about">Acerca</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
+          <a class="nav-link" href="/contact">Contacto</a>
         </li>
         <li id="login-link" class="nav-item" style="display: none;">
-          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/login">Inicio de sesión</a>
         </li>
         <li id="dashboard-link" class="nav-item" style="display: none;">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link" href="/dashboard">Usuario</a>
         </li>
         <li class="nav-item" id="loginNavItem">
           <!-- Contenido se agregará aquí dinámicamente -->
@@ -76,10 +76,10 @@
                   loginNavItem.innerHTML = '<a class="nav-link" href="/c-panel">C-panel</a>';
               } else {
                   // Si es otro rol (por ejemplo, user), mostrar el enlace al dashboard
-                  loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Dashboard</a>';
+                  loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Usuario</a>';
               }
               // Mostrar el enlace para logout
-              logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Logout</a>';
+              logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Cerrar sesión</a>';
           } else {
               // Si el usuario no está autenticado, mostrar el enlace para login
               loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
