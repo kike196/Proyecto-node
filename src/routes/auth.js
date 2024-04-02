@@ -30,9 +30,9 @@ router.get('/register', (req, res) => {
 
 router.get('/check-authentication', authController.isLogged, (req, res) => {
   if (req.user) {
-      res.status(200).json({ authenticated: true, role: req.user.rol });
+      res.status(200).json({ authenticated: true, role: req.user.rol, dbConnection: req.dbConnection });
   } else {
-      res.status(401).json({ authenticated: false });
+      res.status(401).json({ authenticated: false, dbConnection: req.dbConnection });
   }
 });
 

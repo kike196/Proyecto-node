@@ -158,6 +158,9 @@ a.current {
     text-decoration: underline 2px !important;
     text-decoration-color: #ff014e !important;
 }
+.btn.icon {
+    width: 42px;
+}
 /*Banner*/
 .caruselHome {
     position: relative;

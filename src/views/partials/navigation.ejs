@@ -74,20 +74,26 @@
   fetch('/check-authentication')
       .then(response => response.json())
       .then(data => {
-          if (data.authenticated) {
-              // Si el usuario está autenticado, verificar su rol
-              if (data.role === 'Admin' || data.role === 'admin') {
-                  // Si es un admin, mostrar el enlace al C-panel
-                  loginNavItem.innerHTML = '<a class="nav-link" href="/c-panel">C-panel</a>';
+          if (data.dbConnection) {
+              // Si la conexión a la base de datos está disponible
+              if (data.authenticated) {
+                  // Si el usuario está autenticado
+                  if (data.role === 'Admin' || data.role === 'admin') {
+                      // Si es un admin, mostrar el enlace al C-panel
+                      loginNavItem.innerHTML = '<a class="nav-link" href="/c-panel">C-panel</a>';
+                  } else {
+                      // Si es otro rol (por ejemplo, user), mostrar el enlace al dashboard
+                      loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Usuario</a>';
+                  }
+                  // Mostrar el enlace para logout
+                  logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Cerrar sesión</a>';
               } else {
-                  // Si es otro rol (por ejemplo, user), mostrar el enlace al dashboard
-                  loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Usuario</a>';
+                  // Si el usuario no está autenticado, mostrar el enlace para login
+                  loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
               }
-              // Mostrar el enlace para logout
-              logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Cerrar sesión</a>';
           } else {
-              // Si el usuario no está autenticado, mostrar el enlace para login
-              loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
+              // Si la conexión a la base de datos no está disponible
+              console.error('Error al conectar a la base de datos');
           }
       })
       .catch(error => {

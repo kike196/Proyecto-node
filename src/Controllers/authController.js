@@ -277,21 +277,40 @@ export const isAdmin = (req, res, next) => {
 };
 
 export const isLogged = async (req, res, next) => {
+    let db = true;
     if (req.cookies.jwt) {
         try {
             const decodificada = jwt.verify(req.cookies.jwt, process.env.JWT_SECRETO);
             const [results] = await pool.query('SELECT * FROM users WHERE id = ?', [decodificada.id]);
-            if (!results) { return next(); }
+            if (!results) { 
+                req.dbConnection = db;
+                return next(); 
+            }
             req.user = results[0];
+            req.dbConnection = db;
             return next();
         } catch (error) {
             console.log(error);
             return next();
         }
-    } else {
-        return next();  
+    } else if (pool) {
+        pool.getConnection()
+            .then((connection) => {
+                console.log('Conexión exitosa a la base de datos');
+                // Si la conexión es exitosa, libera la conexión inmediatamente
+                connection.release();
+                req.dbConnection = db;
+                return next(); 
+            })
+            .catch((error) => {
+                console.error('Error al conectar a la base de datos:', error.message);
+                db = false;
+                req.dbConnection = db;
+                return next();  
+            });
     }
 };
+
 
 export const logout = (req, res) => {
     res.clearCookie('jwt');   
