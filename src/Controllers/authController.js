@@ -308,6 +308,8 @@ export const isLogged = async (req, res, next) => {
                 req.dbConnection = db;
                 return next();  
             });
+    } else {
+        return next();
     }
 };
 
