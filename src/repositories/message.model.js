@@ -12,12 +12,19 @@ export const getMessage = async (id) => {
 };
 
 export const insertMessage = async (userData) => {
-  const [result] = await pool.query("INSERT INTO messages SET ?", userData);
-  return {
-    ...userData,
-    id: result.insertId,
-  };
+  try {
+    const [result] = await pool.query("INSERT INTO messages SET ?", userData);
+    return {
+      ...userData,
+      id: result.insertId,
+    };
+  } catch (error) {
+    // Manejar el error de inserción de manera adecuada
+    console.error("Error al insertar el mensaje:", error);
+    throw error; // Relanzar el error para que el controlador lo maneje
+  }
 };
+
 
 export const updateMessage = async (userData) => {
   const sql = `
