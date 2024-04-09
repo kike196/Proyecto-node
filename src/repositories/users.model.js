@@ -1,52 +1,45 @@
-import { pool } from "./dbConnection.js";
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const getUsers = async () => {
-  const [rows] = await pool.query("SELECT * FROM users ORDER BY id");
-  return rows;
+  return await prisma.user.findMany({ orderBy: { id: 'asc' } });
 };
 
 export const getUser = async (id) => {
-  const sql = `SELECT * FROM users WHERE id=` + pool.escape(id);
-  const [result] = await pool.query(sql);
-  return result;
+  return await prisma.user.findUnique({
+    where: { id: parseInt(id) }
+  });
 };
 
 export const insertUser = async (userData) => {
-  const [result] = await pool.query("INSERT INTO users SET ?", userData);
-  return {
-    ...userData,
-    id: result.insertId,
-  };
+  return await prisma.user.create({ data: userData });
 };
 
 export const updateUser = async (userData) => {
-  const sql = `
-      UPDATE users SET
-      name = ${pool.escape(userData.name)},
-      phone = ${pool.escape(userData.phone)},
-      email = ${pool.escape(userData.email)}
-      WHERE id = ${userData.id}`;
-
-  const [result] = await pool.query(sql);
-  return result;
+  return await prisma.user.update({
+    where: { id: userData.id },
+    data: {
+      name: userData.name,
+      phone: userData.phone,
+      email: userData.email
+    }
+  });
 };
 
 export const updateUserPath = async (userData) => {
-  const sql = `
-      UPDATE users SET
-      name = IFNULL(${pool.escape(userData.name)}, name),
-      user = IFNULL(${pool.escape(userData.user)}, user),
-      phone = IFNULL(${pool.escape(userData.phone)}, phone),
-      email = IFNULL(${pool.escape(userData.email)}, email),
-      rol = IFNULL(${pool.escape(userData.rol)}, rol)
-      WHERE id = ${pool.escape(userData.id)}`;
-
-  const [result] = await pool.query(sql);
-  return result;
+  return await prisma.user.update({
+    where: { id: userData.id },
+    data: {
+      name: userData.name ?? undefined,
+      user: userData.user ?? undefined,
+      phone: userData.phone ?? undefined,
+      email: userData.email ?? undefined,
+      rol: userData.rol ?? undefined
+    }
+  });
 };
 
 export const deleteUser = async (id) => {
-  const sql = `DELETE FROM users WHERE id=` + pool.escape(id);
-  const [result] = await pool.query(sql);
-  return result;
+  return await prisma.user.delete({ where: { id: parseInt(id) } });
 };

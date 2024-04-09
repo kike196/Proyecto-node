@@ -1,8 +1,7 @@
-import { sendEmail } from "../helpers/mailer.js";
-import {
-    getMessages,
-    insertMessage,
-} from "../repositories/message.model.js";
+import { PrismaClient } from '@prisma/client';
+import { sendEmail } from '../helpers/mailer.js';
+
+const prisma = new PrismaClient();
 
 export const createEmail = async (req, res) => {
     const { name, email, phone, message, 'g-recaptcha-response': grecaptcha } = req.body;
@@ -13,7 +12,7 @@ export const createEmail = async (req, res) => {
         message
     };
     // Obtener desde la base de datos la lista de usuarios que han mandado mensajes en contact 
-    const users = await getMessages();
+    const users = await prisma.message.findMany();
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${grecaptcha}`, {
@@ -126,7 +125,9 @@ export const createEmail = async (req, res) => {
 
     // Si todos los campos son válidos, enviar el correo electrónico
     try {
-        await insertMessage(userData);
+        await prisma.message.create({
+            data: userData
+        });
         await sendEmail(name, email, phone, message);
         return res.status(200).render('contact', {
             alert: true,
@@ -151,4 +152,4 @@ export const createEmail = async (req, res) => {
             title: 'contact'
         });
     }
-}
+};

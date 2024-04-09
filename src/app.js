@@ -4,11 +4,16 @@ import morgan from "morgan";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import cookieParser from 'cookie-parser';
+import { PrismaClient } from '@prisma/client';
+import './database.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Crear una aplicación Express
 const app = express();
+
+// Crear una instancia de Prisma Client
+const prisma = new PrismaClient();
 
 // Configuración de las rutas y el motor de vistas
 app.set('views', join(__dirname, 'views'));
@@ -46,6 +51,12 @@ app.use((req, res, next) => {
     if (!req.user) {
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     }
+    next();
+});
+
+// Agregar Prisma Client a las solicitudes
+app.use((req, res, next) => {
+    req.prisma = prisma;
     next();
 });
 
