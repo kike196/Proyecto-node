@@ -16,7 +16,7 @@ datasource db {
 // Define el modelo de datos para la tabla 'users'
 model User {
   id        Int       @id @default(autoincrement())
-  user      String
+  user      String    @unique @map("userid")
   name      String
   email     String    @unique
   phone     String?
