@@ -52,7 +52,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
     const user = await messageController.getMessage(id);
   
     try {
-      res.render('message', { alert:false, user:user[0], title: `User ${user[0].name}`} );
+      res.render('message', { alert:false, user:user, title: `User ${user.name}`} );
     } catch (error) {
        return res.status(500).json({
         message: 'Messages not found' 
@@ -83,7 +83,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
     const user = await messageController.getMessage(id)
   
     try {
-      res.render('editContacts', {user:user[0], title: `edit user ${user[0].name}`});
+      res.render('editMessage', {user:user, title: `edit user ${user.name}`});
     } catch (error) {
        return res.status(500).json({
         message: 'Messages not found' 
@@ -120,10 +120,11 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
   router.get("/message/delete/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     const id = req.params.id;
     const result = await messageController.deleteMessage(id);
+    console.log(id);
     if (result.affectedRows === 0)
       return res.status(404).json({ msg: "user not found" });
   
-    return res.status(200).redirect('/api/messages')
+    return res.status(200).redirect('/messages')
   });
 
 export default router;

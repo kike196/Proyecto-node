@@ -7,18 +7,24 @@ export const getUsers = async () => {
 };
 
 export const getUser = async (id) => {
-  return await prisma.user.findUnique({
-    where: { id: parseInt(id) }
-  });
+  try {
+    return await prisma.user.findUnique({
+      where: { id: parseInt(id) }
+    });
+  } catch (error) {
+    console.error("Error al buscar usuario:", error);
+    throw new Error(`Error fetching user: ${error.message}`);
+  }
 };
 
+
 export const insertUser = async (userData) => {
-  return await prisma.user.create({ data: userData });
+  return await prisma.user.create({ data: parseInt(userData) });
 };
 
 export const updateUser = async (userData) => {
   return await prisma.user.update({
-    where: { id: userData.id },
+    where: { id: parseInt(userData.id) },
     data: {
       name: userData.name,
       phone: userData.phone,
@@ -29,7 +35,7 @@ export const updateUser = async (userData) => {
 
 export const updateUserPath = async (userData) => {
   return await prisma.user.update({
-    where: { id: userData.id },
+    where: { id: parseInt(userData.id) },
     data: {
       name: userData.name ?? undefined,
       user: userData.user ?? undefined,

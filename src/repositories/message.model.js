@@ -3,16 +3,16 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const getMessages = async () => {
-  return prisma.message.findMany({ orderBy: { id: 'asc' } });
+  return await prisma.message.findMany({ orderBy: { id: 'asc' } });
 };
 
 export const getMessage = async (id) => {
-  return prisma.message.findUnique({ where: { id } });
+  return await prisma.message.findUnique({ where: { id: parseInt(id) } });
 };
 
 export const insertMessage = async (userData) => {
   try {
-    return prisma.message.create({ data: userData });
+    return prisma.message.create({ data: parseInt(userData) });
   } catch (error) {
     // Manejar el error de inserción de manera adecuada
     console.error("Error al insertar el mensaje:", error);
@@ -21,8 +21,8 @@ export const insertMessage = async (userData) => {
 };
 
 export const updateMessage = async (userData) => {
-  return prisma.message.update({
-    where: { id: userData.id },
+  return await prisma.message.update({
+    where: { id: parseInt(userData.id) },
     data: {
       name: userData.name,
       phone: userData.phone,
@@ -32,8 +32,8 @@ export const updateMessage = async (userData) => {
 };
 
 export const updateMessagePath = async (userData) => {
-  return prisma.message.update({
-    where: { id: userData.id },
+  return await prisma.message.update({
+    where: { id: parseInt(userData.id) },
     data: {
       name: userData.name ?? undefined,
       phone: userData.phone ?? undefined,
@@ -44,5 +44,5 @@ export const updateMessagePath = async (userData) => {
 };
 
 export const deleteMessage = async (id) => {
-  return prisma.message.delete({ where: { id } });
+  return await prisma.message.delete({ where: { id: parseInt(id) } });
 };

@@ -30,7 +30,7 @@ router.get("/user/:id", async (req, res) => {
   const user = await getUser(id);
 
   try {
-    res.render('user', { alert:false, user:user[0], title: `User ${user[0].name}`} );
+    res.render('user', { alert:false, user:user, title: `User ${user.name}`} );
   } catch (error) {
      return res.status(500).json({
       message: 'Users not found' 
@@ -61,7 +61,7 @@ router.get("/user/edit/:id", async (req, res) => {
   const user = await getUser(id)
 
   try {
-    res.render('editUsers', {user:user[0], title: `edit user ${user[0].name}`});
+    res.render('editUsers', {user:user, title: `edit user ${user.name}`});
   } catch (error) {
      return res.status(500).json({
       message: 'Users not found' 
