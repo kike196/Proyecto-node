@@ -37,7 +37,9 @@ export const register = async (req, res) => {
         // Incrementar el número máximo en 1 para el nuevo usuario
         const newUserId = maxUserId + 1;
 
-        const userData = { id: newUserId, user: 'user', name, email, phone, pass: passHash, rol, created_at: new Date() }
+        const userData = { id: newUserId, user, name, email, phone, pass: passHash, rol: 'user', created_at: new Date() }
+
+        //console.log(userData);
 
         const existingUser = await prisma.user.findFirst({ where: { OR: [{ user }, { email }, { phone }] } });
         if (existingUser) {
