@@ -1,16 +1,36 @@
 import { PrismaClient } from '@prisma/client';
 import { sendEmail } from '../helpers/mailer.js';
+import * as messageModel from "../repositories/message.model.js";
 
 const prisma = new PrismaClient();
 
 export const createEmail = async (req, res) => {
     const { name, email, phone, message, 'g-recaptcha-response': grecaptcha } = req.body;
+
+    // Obtener el mensaje con el ID más alto
+    const messages = await messageModel.getMessages();
+
+    let maxMessagesId = 0;
+
+    // Buscar el número máximo de ID entre los usuarios existentes
+    messages.forEach(message => {
+        if (message.id > maxMessagesId) {
+            maxMessagesId = message.id;
+        }
+    });
+
+    // Incrementar el número máximo en 1 para el nuevo usuario
+    const newMessageId = maxMessagesId + 1;
+
     const userData = {
+        id: newMessageId,
         name,
         email,
         phone,
-        message
+        message,
+        created_at: new Date() // Obtener la fecha y hora actual
     };
+    
     // Obtener desde la base de datos la lista de usuarios que han mandado mensajes en contact 
     const users = await prisma.message.findMany();
 

@@ -2,7 +2,7 @@ import express from "express";
 import { sendEmail } from "../helpers/mailer.js";
 import { createEmail } from "../Controllers/sendMailController.js";
 import * as authController from '../Controllers/authController.js';
-import * as messageController from "../repositories/message.model.js";
+import * as messageModel from "../repositories/message.model.js";
 
 const router = express.Router();
 
@@ -14,10 +14,26 @@ router.get("/create/email", authController.isAuthenticated, (req, res) => {
   
 router.post("/create/email", authController.isAuthenticated, async (req, res) => {
     const { message } = req.body;
-    const { name, email, phone } = req.user;
-    const userData = { name, email, phone, message };
+
+    const messages = await messageModel.getMessages();
+
+    let maxMessagesId = 0;
+
+    // Buscar el número máximo de ID entre los usuarios existentes
+    messages.forEach(message => {
+        if (message.id > maxMessagesId) {
+            maxMessagesId = message.id;
+        }
+    });
+
+    // Incrementar el número máximo en 1 para el nuevo usuario
+    const newMessageId = maxMessagesId + 1;
+
+    const { name, email, phone, created_at } = req.user;
+    const userData = { id: newMessageId, name, email, phone, message, created_at };
+    //console.log(userData);
     try {
-        await messageController.insertMessage(userData);
+        await messageModel.insertMessage(userData);
         await sendEmail(name, email, phone, message);
         return res.status(200).render('create-email', {
             alert: true,
@@ -38,7 +54,7 @@ router.post("/create/email", authController.isAuthenticated, async (req, res) =>
   
 router.get('/messages', authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     try {
-      const users = await messageController.getMessages();
+      const users = await messageModel.getMessages();
       res.status(200).render('messages', { alert:false, users:users, title: 'Messages'});
     } catch (error) {
       return res.status(500).json({
@@ -49,7 +65,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
   
   router.get("/message/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     const id = req.params.id;
-    const user = await messageController.getMessage(id);
+    const user = await messageModel.getMessage(id);
   
     try {
       res.render('message', { alert:false, user:user, title: `User ${user.name}`} );
@@ -67,20 +83,20 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
       phone: req.body.phone,
       email: req.body.email
     };
-    const result = await messageController.updateMessage(userData);
+    const result = await messageModel.updateMessage(userData);
   
     if (result.affectedRows === 0)
       return res.status(404).json({ msg: "user not found" });
   
     const id = req.params.id;
-    const user = await messageController.getMessage(id);
+    const user = await messageModel.getMessage(id);
   
     return res.status(200).json(user);
   });
   
   router.get("/message/edit/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     const id = req.params.id;
-    const user = await messageController.getMessage(id)
+    const user = await messageModel.getMessage(id)
   
     try {
       res.render('editMessage', {user:user, title: `edit user ${user.name}`});
@@ -92,7 +108,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
   });
   
   router.post("/message/edit/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
-    const users = await messageController.getMessages();
+    const users = await messageModel.getMessages();
     const userData = {
       id: req.params.id,
       name: req.body.name,
@@ -100,7 +116,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
       email: req.body.email,
       message: req.body.message
     };
-    const result = await messageController.updateMessagePath(userData);
+    const result = await messageModel.updateMessagePath(userData);
     if (result.affectedRows === 0)
       return res.status(404).json({ msg: "user not found" });
   
@@ -119,7 +135,7 @@ router.get('/messages', authController.isAuthenticated, authController.isAdmin, 
   
   router.get("/message/delete/:id", authController.isAuthenticated, authController.isAdmin, async (req, res) => {
     const id = req.params.id;
-    const result = await messageController.deleteMessage(id);
+    const result = await messageModel.deleteMessage(id);
     console.log(id);
     if (result.affectedRows === 0)
       return res.status(404).json({ msg: "user not found" });

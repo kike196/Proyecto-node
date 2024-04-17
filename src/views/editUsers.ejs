@@ -36,6 +36,14 @@
                         <input type="text" name="phone" placeholder="Teléfono" class="form-control" value="<%= user.phone %>">
                     </div>
                     <div class="mb-3">
+                      <label for="pass" class="form-label">Contraseña</label>
+                      <input id="pass" name="pass" type="password" placeholder="Nueva contraseña" class="form-control">
+                    </div>   
+                    <div class="mb-3">
+                      <label for="confirmPass" class="form-label">Confirmar Contraseña</label>
+                      <input id="confirmPass" name="confirmPass" type="password" placeholder="Confirmar nueva contraseña" class="form-control">
+                    </div> 
+                    <div class="mb-3">
                         <label for="rol">Rol</label>
                         <select name="rol" id="rol" class="select-css" value="<%= user.user %>">
                             <option value="admin">Admin</option>
@@ -51,6 +59,19 @@
     <% } %>
 
     <%- include('partials/footer.ejs')%>
+    <% if(alert) { %>
+        <script>
+          Swal.fire({
+            title: '<%= alertTitle %>',
+            text:'<%= alertMessage %>',
+            icon:'<%= alertIcon %>',
+            showConfirmButton: <%= showConfirmButton %>,
+            timer: <%= timer %>
+          }).then(()=>{
+            window.location = '/<%= ruta %>'
+          })
+        </script>
+    <% } %>
     
 </body>
 </html>

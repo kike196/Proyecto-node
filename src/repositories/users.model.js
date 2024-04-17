@@ -41,6 +41,7 @@ export const updateUserPath = async (userData) => {
       user: userData.user ?? undefined,
       phone: userData.phone ?? undefined,
       email: userData.email ?? undefined,
+      pass: userData.pass ?? undefined,
       rol: userData.rol ?? undefined
     }
   });

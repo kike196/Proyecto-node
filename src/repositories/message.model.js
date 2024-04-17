@@ -12,7 +12,7 @@ export const getMessage = async (id) => {
 
 export const insertMessage = async (userData) => {
   try {
-    return prisma.message.create({ data: parseInt(userData) });
+    return prisma.message.create({ data: (userData) });
   } catch (error) {
     // Manejar el error de inserción de manera adecuada
     console.error("Error al insertar el mensaje:", error);

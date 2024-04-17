@@ -8,8 +8,6 @@ const prisma = new PrismaClient();
 export const register = async (req, res) => {
     try {
         const { name, user, email, phone, pass, confirmPass, 'g-recaptcha-response': grecaptcha } = req.body;
-        const rol = 'user';
-        const currentDate = new Date();
         if (pass !== confirmPass) {
             return res.status(400).render('register', {
                 alert: true,
@@ -39,7 +37,7 @@ export const register = async (req, res) => {
         // Incrementar el número máximo en 1 para el nuevo usuario
         const newUserId = maxUserId + 1;
 
-        const userData = { id: newUserId, user, name, email, phone, pass: passHash, rol, created_at: currentDate }
+        const userData = { id: newUserId, user: 'user', name, email, phone, pass: passHash, rol, created_at: new Date() }
 
         const existingUser = await prisma.user.findFirst({ where: { OR: [{ user }, { email }, { phone }] } });
         if (existingUser) {
@@ -126,7 +124,7 @@ export const login = async (req, res) => {
             return res.render('login', {
                 alert: true,
                 alertTitle: "Advertencia",
-                alertMessage: "Ingrese un usuario y password",
+                alertMessage: "Ingrese un usuario y contraseña",
                 alertIcon: 'info',
                 showConfirmButton: true,
                 timer: false,
@@ -140,7 +138,7 @@ export const login = async (req, res) => {
             return res.render('login', {
                 alert: true,
                 alertTitle: "Error",
-                alertMessage: "Usuario y/o Password incorrectas",
+                alertMessage: "Usuario y/o contraseña incorrectas",
                 alertIcon: 'error',
                 showConfirmButton: true,
                 timer: false,
