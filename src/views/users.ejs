@@ -60,8 +60,12 @@
 
     <script>
         $(document).ready(function() {
-            $('#userTable').DataTable();
+            $('#userTable').DataTable({
+                fixedHeader: true,
+                responsive: true
+            });
         });
+
 
         function confirmarBorrado(userId) {
             if (confirm("¿Está seguro que desea borrar este usuario?")) {

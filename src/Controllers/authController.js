@@ -184,6 +184,10 @@ export const isAuthenticated = async (req, res, next) => {
             req.user = user;
             return next();
         } catch (error) {
+            if (error.name === 'TokenExpiredError') {
+              res.clearCookie('jwt');
+              return res.redirect('/login');
+            }
             console.log(error);
             return res.redirect('/login');
         }

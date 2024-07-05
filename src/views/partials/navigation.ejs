@@ -49,14 +49,8 @@
         <li class="nav-item">
           <a class="nav-link" href="/about">Acerca</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contacto</a>
-        </li>
-        <li id="login-link" class="nav-item" style="display: none;">
-          <a class="nav-link" href="/login">Inicio de sesión</a>
-        </li>
-        <li id="dashboard-link" class="nav-item" style="display: none;">
-          <a class="nav-link" href="/dashboard">Usuario</a>
+        <li class="nav-item" id="contactNavItem">
+          <!-- Contenido se agregará aquí dinámicamente -->
         </li>
         <li class="nav-item" id="loginNavItem">
           <!-- Contenido se agregará aquí dinámicamente -->
@@ -76,6 +70,8 @@
       .then(data => {
           if (data.dbConnection) {
               // Si la conexión a la base de datos está disponible
+              contactNavItem.innerHTML = '<a class="nav-link" href="/contact">Contacto</a>';
+
               if (data.authenticated) {
                   // Si el usuario está autenticado
                   if (data.role === 'Admin' || data.role === 'admin') {

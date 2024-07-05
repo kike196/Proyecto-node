@@ -732,7 +732,7 @@ label{
 .Footer{
 	background-color: #00030f;
 	padding: 4rem 0;
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 .ulFooter{
 	padding-left: 0;
@@ -740,72 +740,72 @@ label{
 }
 .ulFooter li{
 	color: var(--color-letrac);
-    font-size: 20px;
+  font-size: 20px;
 	margin-bottom: 15px;
 	display: flex;
 	flex-direction: row;
-    align-items: center;
+  align-items: center;
 }
 .Footer #menu {
-    justify-content: center;
-    margin-bottom: 5rem !important;
+  justify-content: center;
+  margin-bottom: 5rem !important;
 }
 .Footer #menu a {
-    color: var(--color-letrab);
+  color: var(--color-letrab);
 }
 .itemFooter{
 	width: 30px ;
 	height: auto;
-    margin-right: 15px;
+  margin-right: 15px;
 }
 .ulFooter a{
 	text-decoration: none;
 }
 .ulFooter a li:hover{
-    color: #ff014b !important;
+  color: #ff014b !important;
 }
 .ulFooter a:hover, .ulFooter a:active {
-    color: #ff014b !important;
+  color: #ff014b !important;
 }
 .logoFooter {
-    display: flex;
-    align-items: end;
-    flex-direction: column;
+  display: flex;
+  align-items: end;
+  flex-direction: column;
 }
 .imgLogoFooter {
-    float: right;
-    width: 170px;
-    height: auto;
+  float: right;
+  width: 170px;
+  height: auto;
 }
 .iconos-social {
-    margin-top: 1rem;
-    width: 250px;
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-    font-size: 25px;
+  margin-top: 1rem;
+  width: 250px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-size: 25px;
 }
 a.iconFooter {
-    margin-right: 15px;
-    text-decoration: none !important;
+  margin-right: 15px;
+  text-decoration: none !important;
 }
 .logoWeclick{
-    padding-right: 35px;
+  padding-right: 35px;
 }
 .iconos-social .fa-brands{
-    color: #ffffff;
-    cursor: pointer;
+  color: #ffffff;
+  cursor: pointer;
 }
 .socialFooter {
-    width: 30px ;
+  width: 30px ;
 	height: auto;
 }
 .derechos{
-    color: var(--color-letrab);
-    margin-top: 3rem;
+  color: var(--color-letrab);
+  margin-top: 3rem;
 }
 .derechos span {
-    color: #006fdd !important;
+  color: #006fdd !important;
 }
 
 /* whatsapp button */
