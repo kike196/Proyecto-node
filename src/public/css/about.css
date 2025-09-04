@@ -1,0 +1,191 @@
+/* about.css - Estilos específicos para la vista About */
+
+:root {
+    /* Variables para modo claro */
+    --skill-bg: linear-gradient(135deg, #6e8efb, #a777e3);
+    --skill-color: white;
+    --skill-item-bg: rgba(255, 255, 255, 0.2);
+    --section-title-border: #6e8efb;
+    --experience-bg: #f8f9fa;
+    --experience-border: #6e8efb;
+    --company-color: #343a40;
+    --position-color: #6e8efb;
+    --date-location-color: #6c757d;
+    --responsibilities-color: #495057;
+    --bullet-color: #6e8efb;
+    --project-bg: #f8f9fa;
+    --tech-badge-bg: #6c757d;
+    --tech-badge-color: white;
+    --project-item-border: #eee;
+}
+
+[data-theme="dark"] {
+    /* Variables para modo oscuro */
+    --skill-bg: linear-gradient(135deg, #4a5fcf, #7c5ac2);
+    --skill-color: #f0f0f0;
+    --skill-item-bg: rgba(255, 255, 255, 0.1);
+    --section-title-border: #8fa3ff;
+    --experience-bg: #2a2a2a;
+    --experience-border: #8fa3ff;
+    --company-color: #e0e0e0;
+    --position-color: #8fa3ff;
+    --date-location-color: #a0a0a0;
+    --responsibilities-color: #d0d0d0;
+    --bullet-color: #8fa3ff;
+    --project-bg: #2a2a2a;
+    --tech-badge-bg: #8fa3ff;
+    --tech-badge-color: #1a1a1a;
+    --project-item-border: #444;
+}
+
+.skill-category {
+    background: var(--skill-bg);
+    color: var(--skill-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.profile-picture {
+    max-width: 250px;
+    border: 5px solid var(--skill-item-bg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skill-item {
+    background: var(--skill-item-bg);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.section-title {
+    border-bottom: 3px solid var(--section-title-border);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
+.experience {
+    background-color: var(--experience-bg);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--experience-border);
+}
+
+.company {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--company-color);
+    margin-bottom: 5px;
+}
+
+.company:hover {
+    color: var(--position-color);
+    transition: color 0.3s ease;
+}
+
+.position {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--position-color);
+    margin-bottom: 5px;
+}
+
+.date-location {
+    color: var(--date-location-color);
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.responsibilities {
+    color: var(--responsibilities-color);
+    line-height: 1.6;
+}
+
+.responsibilities li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 20px;
+}
+
+/* Nuevos estilos para la sección de proyectos */
+.project-highlights {
+    background-color: var(--project-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.project-highlights h5 {
+    color: var(--position-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.tech-badge {
+    display: inline-block;
+    background: var(--tech-badge-bg);
+    color: var(--tech-badge-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin: 2px;
+}
+
+.project-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--project-item-border);
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item strong {
+    color: var(--company-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.project-item ul {
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.project-item li {
+    margin-bottom: 5px;
+    color: var(--responsibilities-color);
+}
+
+@media (max-width: 768px) {
+    .skill-list {
+        justify-content: center;
+    }
+
+    .project-highlights {
+        padding: 15px;
+    }
+
+    .experience {
+        padding: 20px;
+    }
+}

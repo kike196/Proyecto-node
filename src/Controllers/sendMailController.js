@@ -7,29 +7,29 @@ const prisma = new PrismaClient();
 export const createEmail = async (req, res) => {
     const { name, email, phone, message, 'g-recaptcha-response': grecaptcha } = req.body;
 
-    // Obtener el mensaje con el ID más alto
-    const messages = await messageModel.getMessages();
+    // // Obtener el mensaje con el ID más alto
+    // const messages = await messageModel.getMessages();
 
-    let maxMessagesId = 0;
+    // let maxMessagesId = 0;
 
-    // Buscar el número máximo de ID entre los usuarios existentes
-    messages.forEach(message => {
-        if (message.id > maxMessagesId) {
-            maxMessagesId = message.id;
-        }
-    });
+    // // Buscar el número máximo de ID entre los usuarios existentes
+    // messages.forEach(message => {
+    //     if (message.id > maxMessagesId) {
+    //         maxMessagesId = message.id;
+    //     }
+    // });
 
-    // Incrementar el número máximo en 1 para el nuevo usuario
-    const newMessageId = maxMessagesId + 1;
+    // // Incrementar el número máximo en 1 para el nuevo usuario
+    // const newMessageId = maxMessagesId + 1;
 
-    const userData = {
-        id: newMessageId,
-        name,
-        email,
-        phone,
-        message,
-        created_at: new Date() // Obtener la fecha y hora actual
-    };
+    // const userData = {
+    //     id: newMessageId,
+    //     name,
+    //     email,
+    //     phone,
+    //     message,
+    //     created_at: new Date() // Obtener la fecha y hora actual
+    // };
     
     // Obtener desde la base de datos la lista de usuarios que han mandado mensajes en contact 
     const users = await prisma.message.findMany();
@@ -145,9 +145,9 @@ export const createEmail = async (req, res) => {
 
     // Si todos los campos son válidos, enviar el correo electrónico
     try {
-        await prisma.message.create({
-            data: userData
-        });
+        // await prisma.message.create({
+        //     data: userData
+        // });
         await sendEmail(name, email, phone, message);
         return res.status(200).render('contact', {
             alert: true,

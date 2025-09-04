@@ -1,59 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/about.css">
+
     <%- include('partials/head.ejs')%>
 </head>
+
 <body>
 
     <%- include('partials/navigation.ejs')%>
 
-    <div class="container">
-        <main class="vh-100 pt-2 text-center d-flex justify-content-center align-items-center">
-            <section>
-                <h1 class="display-1">Acerca de mi</h1>
-                <p>
-                    Soy un joven apasionado, perseverante y determinado a mejorar constantemente. Siempre estoy explorando nuevos temas y tecnologías, ya que disfruto del desafío de ampliar mis habilidades y conocimientos. Con experiencia en diversos ámbitos laborales, me he acostumbrado a enfrentar diferentes situaciones y adaptarme con facilidad. Me encanta establecer metas desafiantes para superarme a mí mismo y encontrar soluciones creativas a los obstáculos que se presentan en el camino.
-                    <br> <br>
-                    Una de mis mayores satisfacciones es ayudar a los demás, ya sea brindando apoyo en sus problemas o aprendiendo de sus experiencias. Mi naturaleza sociable y mi capacidad para trabajar en equipo me permiten colaborar de manera efectiva y construir relaciones sólidas en cualquier entorno laboral. Estoy comprometido a contribuir con mi mejor esfuerzo en cada proyecto y a seguir aprendiendo y creciendo en el proceso.
-                </p>
-            </section>
-        </main>
-    
-        <section>
-            <h2 class="display-3 text-center">Habilidades</h2>
-            <p>
-                <ul>
-                    <li>
-                        Experiencia HTML5, CSS, SASS, responsive design, JavaScript (ES6) y
-                        TypeScript.
-                    </li>
-                    <li>
-                        React (Next y Gatsby) con Router, Helmet, Redux y Hooks como
-                        useState, useEffect y Context.
-                    </li>
-                    <li>
-                        Uso de librerías de estilo como Tailwind, MUI, Styled Components y
-                        Emotion.
-                    </li>
-                    <li>
-                        Experiencia con Node, NestJS con arquitectura Rest y GraphQL
-                    </li>
-                    <li>
-                        Git, Gitlab y Github Atomic Design
-                    </li>
-                    <li>
-                        Testing con Jest y React Testing Library Usuario de Linux y Vim
-                    </li>
-                </ul>
-            </p>
-        </section>
-    </div>
+        <div class="container">
+            <main class="pt-5">
+                <section class="mb-5 text-center">
+                    <h1 class="display-4 mb-5">Acerca de mí</h1>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 mb-4 mb-lg-0">
+                            <img src="/images/profile.jpg" class="img-fluid rounded-circle profile-picture"
+                                alt="Foto de perfil">
+                        </div>
+                        <div class="col-lg-8 text-lg-start">
+                            <p class="lead">
+                                Soy un desarrollador apasionado con más de 5 años de experiencia en la creación de
+                                aplicaciones web robustas y escalables. Me especializo en tecnologías como PHP,
+                                JavaScript, Laravel, Yii2, Vue.js y React.js, así como en la gestión de bases de datos
+                                con MySQL, PostgreSQL y la implementación de soluciones con WordPress y Drupal.
+                            </p>
+                            <p class="lead mt-3">
+                                Disfruto del desafío de explorar y dominar nuevas tecnologías para ampliar
+                                constantemente mis habilidades. Me encanta establecer metas desafiantes para superarme a
+                                mí mismo y encontrar soluciones creativas a los obstáculos que se presentan,
+                                comprometiéndome a contribuir con mi mejor esfuerzo en cada proyecto.
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
+                <section class="my-5 py-4">
+                    <h2 class="section-title display-5 mb-5 text-center">Habilidades Técnicas</h2>
 
-    <%- include('partials/footer.ejs')%>
-    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="skill-category">
+                                <h3>Frontend</h3>
+                                <div class="skill-list">
+                                    <span class="skill-item">HTML5</span>
+                                    <span class="skill-item">CSS3/SASS</span>
+                                    <span class="skill-item">JavaScript (ES6+)</span>
+                                    <span class="skill-item">TypeScript</span>
+                                    <span class="skill-item">React.js</span>
+                                    <span class="skill-item">Next.js</span>
+                                    <span class="skill-item">Gatsby</span>
+                                    <span class="skill-item">Vue.js v3</span>
+                                    <span class="skill-item">Tailwind</span>
+                                    <span class="skill-item">Material-UI</span>
+                                    <span class="skill-item">Styled Components</span>
+                                    <span class="skill-item">Emotion</span>
+                                    <span class="skill-item">Responsive Design</span>
+                                    <span class="skill-item">Atomic Design</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="skill-category">
+                                <h3>Backend & Bases de Datos</h3>
+                                <div class="skill-list">
+                                    <span class="skill-item">PHP</span>
+                                    <span class="skill-item">Laravel</span>
+                                    <span class="skill-item">CakePHP</span>
+                                    <span class="skill-item">Yii2</span>
+                                    <span class="skill-item">Node.js</span>
+                                    <span class="skill-item">NestJS</span>
+                                    <span class="skill-item">REST APIs</span>
+                                    <span class="skill-item">GraphQL</span>
+                                    <span class="skill-item">MySQL</span>
+                                    <span class="skill-item">PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="skill-category">
+                                <h3>CMS & Plataformas</h3>
+                                <div class="skill-list">
+                                    <span class="skill-item">WordPress</span>
+                                    <span class="skill-item">Drupal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="skill-category">
+                                <h3>Herramientas & Metodologías</h3>
+                                <div class="skill-list">
+                                    <span class="skill-item">Git</span>
+                                    <span class="skill-item">GitHub</span>
+                                    <span class="skill-item">GitLab</span>
+                                    <span class="skill-item">Jest</span>
+                                    <span class="skill-item">Testing Library</span>
+                                    <span class="skill-item">Linux</span>
+                                    <span class="skill-item">Vim</span>
+                                    <span class="skill-item">Optimización</span>
+                                    <span class="skill-item">Mantenibilidad</span>
+                                    <span class="skill-item">Soporte en Producción</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="my-5 py-4">
+                    <h2 class="section-title display-5 mb-5 text-center">Experiencia Profesional</h2>
+
+                    <div class="experience">
+                        <div class="company">IA2030</div>
+                        <div class="position">Programador Full Stack</div>
+                        <div class="date-location">Oct. 2024 – Jul. 2025 | Nueva Esparta, Venezuela</div>
+                        <ul class="responsibilities">
+                            <li>Desarrollé, implementé y mantuve funcionalidades clave para múltiples proyectos web,
+                                asegurando un rendimiento óptimo y estable.</li>
+                            <li>Optimicé código existente, mejorando significativamente el rendimiento y la
+                                mantenibilidad de las aplicaciones.</li>
+                            <li>Lideré la construcción de módulos completos, desde el diseño hasta el despliegue final.
+                            </li>
+                            <li>Brindé soporte en producción, resolviendo incidentes críticos y garantizando la
+                                continuidad operativa.</li>
+                        </ul>
+                    
+                        <div class="project-highlights">
+                            <h5>Tecnologías principales utilizadas:</h5>
+                            <div>
+                                <span class="tech-badge">Vue.js 3</span>
+                                <span class="tech-badge">TypeScript</span>
+                                <span class="tech-badge">CakePHP</span>
+                                <span class="tech-badge">PostgreSQL</span>
+                                <span class="tech-badge">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience">
+                        <a href="https://www.weclickdigital.com/" target="_blank" rel="noopener noreferrer"
+                            class="company" style="text-decoration: none;">
+                            Weclick Digital
+                        </a>
+                        <div class="position">Desarrollador Web Senior</div>
+                        <div class="date-location">May. 2022 – Feb. 2024 | Nueva Esparta, Venezuela (Remoto)</div>
+                        <ul class="responsibilities">
+                            <li>Lideré el ciclo completo de desarrollo para aplicaciones web y campañas de marketing
+                                digital para importantes clientes internacionales en Centro América y Uruguay.</li>
+                            <li>Colaboré en equipos multidisciplinarios siguiendo metodologías ágiles para entregar
+                                proyectos dentro de los plazos establecidos.</li>
+                            <li>Implementé soluciones técnicas que procesaron transacciones y gestionaron datos de
+                                usuarios de manera segura y eficiente.</li>
+                        </ul>
+
+                        <div class="project-highlights">
+                            <h5>Proyectos Destacados (2022):</h5>
+
+                            <div class="project-item">
+                                <strong>Sistema de Promociones - Borges Centro América</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">REST API</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé un sistema completo de gestión de promociones para productos
+                                        alimenticios</li>
+                                    <li>Implementé módulos de administración, validación de participantes y generación
+                                        de reportes</li>
+                                    <li>Optimicé el rendimiento para manejar picos de tráfico durante campañas
+                                        promocionales</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Sistema de Canjeo de Puntos - Coors Light Centro América</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">JavaScript</span>
+                                </div>
+                                <ul>
+                                    <li>Creé una plataforma de fidelización donde usuarios canjeaban puntos por premios
+                                    </li>
+                                    <li>Integré con sistemas de cupones y validación en puntos de venta</li>
+                                    <li>Diseñé la arquitectura de base de datos para tracking de transacciones y puntos
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Ventanilla de Información - Agexport Guatemala</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">Bootstrap</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé un sistema de gestión de información para exportadores</li>
+                                    <li>Implementé paneles administrativos y módulos de categorización de contenido</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Sistema de Recomendación - Purina Centro América</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">Algoritmos</span>
+                                </div>
+                                <ul>
+                                    <li>Creé un sistema interactivo para recomendar nombres de mascotas basado en
+                                        características</li>
+                                    <li>Implementé un algoritmo de matching que mejoró la experiencia de usuario</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Sitio Minestle - Nestlé Centro América</strong>
+                                <div>
+                                    <span class="tech-badge">Drupal</span>
+                                    <span class="tech-badge">PHP</span>
+                                    <span class="tech-badge">CSS3</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé y personalicé un sitio corporativo utilizando Drupal</li>
+                                    <li>Implementé módulos personalizados y optimicé el rendimiento del sitio</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="project-highlights mt-4">
+                            <h5>Proyectos Destacados (2021):</h5>
+
+                            <div class="project-item">
+                                <strong>Campañas de Ebeauty Uruguay y Beauty Zone</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">JavaScript</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé múltiples plataformas de promociones y ofertas de productos para el
+                                        mercado uruguayo y centroamericano</li>
+                                    <li>Implementé sistemas de registro, validación y seguimiento de participantes</li>
+                                    <li>Creé paneles de administración para el monitoreo en tiempo real de las campañas
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Landing Pages y Centros de Preferencia - Nestlé Centro América</strong>
+                                <div>
+                                    <span class="tech-badge">Drupal</span>
+                                    <span class="tech-badge">PHP</span>
+                                    <span class="tech-badge">JavaScript</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé landing pages para campañas específicas de productos Nescafé</li>
+                                    <li>Implementé centros de preferencia para segmentación de audiencia y marketing
+                                        personalizado</li>
+                                    <li>Optimicé los sitios para máximo rendimiento y conversión</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience mt-5">
+                        <a href="https://www.weclickdigital.com/" target="_blank" rel="noopener noreferrer"
+                            class="company" style="text-decoration: none;">
+                            Weclick Digital
+                        </a>
+                        <div class="position">Desarrollador Web</div>
+                        <div class="date-location">May. 2019 – Dic. 2019 | Nueva Esparta, Venezuela</div>
+                        <ul class="responsibilities">
+                            <li>Participé en el desarrollo de aplicaciones web personalizadas para diversos clientes,
+                                principalmente en Guatemala.</li>
+                            <li>Contribuí al ciclo completo de desarrollo desde el análisis de requerimientos hasta la
+                                implementación.</li>
+                            <li>Mantuve y optimicé sistemas existentes mejorando su funcionalidad y rendimiento.</li>
+                        </ul>
+
+                        <div class="project-highlights">
+                            <h5>Proyectos Destacados (2019):</h5>
+
+                            <div class="project-item">
+                                <strong>Sistema de Facturación - Harley Guatemala</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">jQuery</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé un sistema de registro de facturación y gestión de requerimientos de
+                                        clientes</li>
+                                    <li>Implementé módulos de generación de reportes y seguimiento de estados</li>
+                                    <li>Automaticé procesos manuales mejorando la eficiencia operativa</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Sistema de Inscripción - Escuela La Asunción Guatemala</strong>
+                                <div>
+                                    <span class="tech-badge">Yii2</span>
+                                    <span class="tech-badge">MySQL</span>
+                                    <span class="tech-badge">Bootstrap</span>
+                                </div>
+                                <ul>
+                                    <li>Creé una plataforma completa de inscripción en línea para alumnos</li>
+                                    <li>Implementé validaciones de datos y flujos de aprobación</li>
+                                    <li>Diseñé una interfaz amigable para usuarios con diferentes niveles de acceso</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <strong>Sitios Informativos - VUPE Guatemala y Agexport Guatemala</strong>
+                                <div>
+                                    <span class="tech-badge">WordPress</span>
+                                    <span class="tech-badge">PHP</span>
+                                    <span class="tech-badge">CSS3</span>
+                                </div>
+                                <ul>
+                                    <li>Desarrollé sitios web informativos con WordPress</li>
+                                    <li>Personalicé temas y plugins según los requerimientos específicos de cada cliente
+                                    </li>
+                                    <li>Optimicé el SEO y la experiencia de usuario en todos los proyectos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <%- include('partials/footer.ejs')%>
+
 </body>
+
 </html>

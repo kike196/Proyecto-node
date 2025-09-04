@@ -341,7 +341,6 @@ a.current {
 .contentCard > .animationCard {
     padding: 2rem;
     text-align: left;
-    cursor: pointer;
     border: solid 1px #ff014e;
     color: var(--color-letra);
     transition: 0.5s;
@@ -518,7 +517,8 @@ div#seccion-5 .row {
     height: 50px;
     color: var(--color-letra);
     -webkit-appearance: none;
-    -moz-appearance: none;
+    -moz-appearance: none; /* Firefox */
+    appearance: none; /* Estandar */
     background-image: url(../images/iconos/flechaAbajoGris.png);
     background-repeat: no-repeat;
     background-position-x: 95%;
@@ -811,101 +811,9 @@ a.iconFooter {
 /* whatsapp button */
 
 .whatswidget-conversation {
-    accent-color: revert;
-    alignment-baseline: revert;
-    animation: revert;
-    animation-composition: revert;
-    appearance: revert;
-    app-region: revert;
-    aspect-ratio: revert;
-    backdrop-filter: revert;
-    backface-visibility: revert;
-    background: revert;
-    background-blend-mode: revert;
-    baseline-shift: revert;
-    baseline-source: revert;
-    block-size: revert;
-    border: revert;
-    border-block: revert;
-    border-collapse: revert;
-    border-end-end-radius: revert;
-    border-end-start-radius: revert;
-    border-inline: revert;
-    border-radius: revert;
-    border-start-end-radius: revert;
-    border-start-start-radius: revert;
-    box-shadow: revert;
-    box-sizing: revert;
-    break-after: revert;
-    break-before: revert;
-    break-inside: revert;
-    buffered-rendering: revert;
-    caption-side: revert;
-    caret-color: revert;
-    clear: revert;
-    clip-path: revert;
-    clip-rule: revert;
-    clip: revert;
-    color-interpolation-filters: revert;
-    color-interpolation: revert;
-    color-rendering: revert;
-    color-scheme: revert;
-    color: #d8d8d8; 
-    contain-intrinsic-block-size: revert; 
-    contain-intrinsic-inline-size: revert; 
-    contain-intrinsic-size: revert; 
-    contain: revert; 
-    content-visibility: revert; 
-    content: revert; 
-    counter-increment: revert; 
-    counter-reset: revert; 
-    counter-set: revert; 
-    cursor: revert; 
-    cx: revert; 
-    cy: revert; 
-    display:none; 
-    dominant-baseline :revert; 
-    empty-cells :revert; 
-    fill-opacity :revert; 
-    fill-rule :revert; 
-    fill :revert; 
-    filter :revert; 
-    flex-flow :revert; 
-    flex :revert; 
-    float :revert; 
-    flood-color :revert; 
-    flood-opacity :revert; 
-    font-palette :revert; 
-    font-smooth :revert; 
-    font-synthesis :revert; 
-    font-variant-caps :revert;  
-    font-variant-east-asian :revert;  
-    font-variant-ligatures :revert;  
-    font-variant-numeric :revert;  
-    font-variant-position :revert;  
-    font-variant :revert;  
-    font-weight :revert;  
-    font-style :revert;  
-    font-stretch :revert;  
-    font-size-adjust :revert;  
-    font-size :revert;  
-    font-family :revert ;  
-    forced-color-adjust :revert ;  
-    gap :revert ;  
-    inset :revert ;  
-    isolation :revert ;  
-    justify-content :revert ;  
-    justify-items :revert ;  
-    justify-self :revert ;  
-    left :revert ;  
-    letter-spacing :revert ;  
-    lighting-color :revert ;  
-    line-break :revert ;  
-    line-height-step :revert ;  
-    line-height :revert ;  
-    list-style-image :revert ;  
-    list-style-position :revert ;  
-    list-style-type :revert ;  
+    all: revert; /* Restablece todas las propiedades a su valor inicial */
+    display: none; 
+    color: #d8d8d8;
 }
 .whatswidget-widget-wrapper{
     font-family:"Helvetica Neue","Apple Color Emoji",Helvetica,Arial,sans-serif !important;

@@ -47,56 +47,60 @@
           <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">Acerca</a>
+          <a class="nav-link" href="/about">Acerca de mi</a>
         </li>
-        <li class="nav-item" id="contactNavItem">
-          <!-- Contenido se agregará aquí dinámicamente -->
-        </li>
-        <li class="nav-item" id="loginNavItem">
-          <!-- Contenido se agregará aquí dinámicamente -->
-        </li>
-        <li class="nav-item" id="logoutNavItem">
-          <!-- Contenido se agregará aquí dinámicamente -->
-        </li>
+        <!--
+          <li class="nav-item" id="contactNavItem">
+            
+          </li>
+          <li class="nav-item" id="loginNavItem">
+            
+          </li>
+          <li class="nav-item" id="logoutNavItem">
+            
+          </li>
+        -->
       </ul>
     </div>
   </div>
 </nav> 
 
+<!--
 <script>
-  // Realizar una solicitud GET al servidor para verificar el estado de autenticación del usuario
-  fetch('/check-authentication')
-      .then(response => response.json())
-      .then(data => {
-          if (data.dbConnection) {
-              // Si la conexión a la base de datos está disponible
-              contactNavItem.innerHTML = '<a class="nav-link" href="/contact">Contacto</a>';
+  // // Realizar una solicitud GET al servidor para verificar el estado de autenticación del usuario
+  // fetch('/check-authentication')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //         if (data.dbConnection) {
+  //             // Si la conexión a la base de datos está disponible
+  //             contactNavItem.innerHTML = '<a class="nav-link" href="/contact">Contacto</a>';
 
-              if (data.authenticated) {
-                  // Si el usuario está autenticado
-                  if (data.role === 'Admin' || data.role === 'admin') {
-                      // Si es un admin, mostrar el enlace al C-panel
-                      loginNavItem.innerHTML = '<a class="nav-link" href="/c-panel">C-panel</a>';
-                  } else {
-                      // Si es otro rol (por ejemplo, user), mostrar el enlace al dashboard
-                      loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Usuario</a>';
-                  }
-                  // Mostrar el enlace para logout
-                  logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Cerrar sesión</a>';
-              } else {
-                  // Si el usuario no está autenticado, mostrar el enlace para login
-                  loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
-              }
-          } else {
-              // Si la conexión a la base de datos no está disponible
-              console.error('Error al conectar a la base de datos');
-          }
-      })
-      .catch(error => {
-          // Manejar errores de la solicitud
-          console.error('Error al verificar autenticación:', error);
-      });
-</script>
+  //             if (data.authenticated) {
+  //                 // Si el usuario está autenticado
+  //                 if (data.role === 'Admin' || data.role === 'admin') {
+  //                     // Si es un admin, mostrar el enlace al C-panel
+  //                     loginNavItem.innerHTML = '<a class="nav-link" href="/c-panel">C-panel</a>';
+  //                 } else {
+  //                     // Si es otro rol (por ejemplo, user), mostrar el enlace al dashboard
+  //                     loginNavItem.innerHTML = '<a class="nav-link" href="/dashboard">Usuario</a>';
+  //                 }
+  //                 // Mostrar el enlace para logout
+  //                 logoutNavItem.innerHTML = '<a type="button" class="px-3 btn btn-danger" href="/logout">Cerrar sesión</a>';
+  //             } else {
+  //                 // Si el usuario no está autenticado, mostrar el enlace para login
+  //                 loginNavItem.innerHTML = '<a class="nav-link" href="/login">Login</a>';
+  //             }
+  //         } else {
+  //             // Si la conexión a la base de datos no está disponible
+  //             console.error('Error al conectar a la base de datos');
+  //         }
+  //     })
+  //     .catch(error => {
+  //         // Manejar errores de la solicitud
+  //         console.error('Error al verificar autenticación:', error);
+  //     });
+</script> 
+-->
  
 <script>
   // Función para agregar la clase activa al enlace de navegación correspondiente a la vista actual
@@ -120,5 +124,3 @@
   // Llama a la función para marcar la vista actual cuando se carga la página
   window.addEventListener('DOMContentLoaded', marcarVistaActual);
 </script>
-
-

@@ -1,0 +1,66 @@
+services:
+  # Servicio para la aplicación Node.js
+  app:
+    # Construye la imagen a partir del Dockerfile en el directorio actual
+    build: .
+    container_name: proyecto-node-app
+    ports:
+      # Mapea el puerto 3000 del host al 3000 del contenedor
+      - "3000:3000"
+    volumes:
+      # Monta el código fuente local en el contenedor para desarrollo (hot-reloading)
+      # Esto te permite ver los cambios en tu código sin tener que reconstruir la imagen.
+      # Se excluye node_modules para usar los instalados dentro del contenedor.
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      # Define las variables de entorno para la aplicación.
+      # ¡IMPORTANTE! El host de la base de datos es el nombre del servicio ('db'), no 'localhost'.
+      DATABASE_URL: "mysql://user:password@db:3306/mydatabase"
+      NODE_ENV: development
+    depends_on:
+      db:
+        # Espera a que el healthcheck de la base de datos sea exitoso
+        condition: service_healthy
+
+  # Servicio para la base de datos MySQL
+  db:
+    image: mysql:8.0 # Usa una imagen oficial de MySQL
+    container_name: proyecto-node-db
+    # Es importante agregar un comando para que MySQL use la autenticación nativa
+    # que es compatible con el driver de Prisma.
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+    healthcheck:
+      # Comando para verificar que MySQL está listo
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+      start_period: 10s
+    ports:
+      # Mapea el puerto de la base de datos para que puedas acceder desde tu máquina si lo necesitas
+      - "3306:3306"
+    volumes:
+      # Persiste los datos de la base de datos en un volumen local para que no se pierdan
+      - mysql_data:/var/lib/mysql
+
+  # Servicio para phpMyAdmin (GUI para MySQL)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: proyecto-node-phpmyadmin
+    ports:
+      # Expone phpMyAdmin en el puerto 8080 de tu máquina
+      - "8080:80"
+    environment:
+      # Le dice a phpMyAdmin dónde encontrar el servidor de la base de datos
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  # Define el volumen para persistir los datos de la base de datos
+  mysql_data:
