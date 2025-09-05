@@ -320,6 +320,10 @@ a.current {
     text-align: left;
     padding: 0 5rem;
 }
+/* header */
+header {
+    height: 100vh;
+}
 /*service*/
 .container.service {
     padding-bottom: 2rem;
@@ -1245,6 +1249,11 @@ a.iconFooter {
         width: 100%;
         padding: 15px;
         margin-bottom: 4rem;
+    }
+    /* header */
+    header {
+        height: auto;
+        margin-bottom: 2rem;
     }
     .tituloRazones {
         font-size: 36px;
