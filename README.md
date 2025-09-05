@@ -18,6 +18,7 @@
 - [API y Endpoints](#-api-y-endpoints)
 - [Variables de Entorno](#-variables-de-entorno)
 - [Despliegue](#-despliegue)
+- [Consideraciones del Portafolio](#-consideraciones-del-portafolio)
 - [Contribución](#-contribución)
 - [Licencia](#-licencia)
 
@@ -62,22 +63,23 @@ La configuración incluye:
 ## 🛠️ Tecnologías Utilizadas
 
 ### Backend
-- **Node.js 20.x** - Entorno de ejecución JavaScript
-- **Express 4.18** - Framework web para Node.js
-- **Prisma 5.0** - ORM moderno para Node.js
+- **Node.js 20.x** - Entorno de ejecución JavaScript del lado del servidor.
+- **Express 4.x** - Framework web minimalista para construir APIs y aplicaciones.
+- **Prisma 5.x** - ORM de próxima generación para Node.js y TypeScript.
 
 ### Base de Datos
-- **MySQL 8.x** - Sistema de gestión de bases de datos relacional
-- **Prisma Client** - Cliente de base de datos generado
+- **MySQL 8.0** - Sistema de gestión de bases de datos relacional.
+- **phpMyAdmin** - Herramienta de administración para MySQL a través de la web.
 
-### Frontend/Templates
-- **EJS** - Motor de plantillas para renderizado del lado del servidor
-- **HTML5/CSS3/JavaScript** - Tecnologías web estándar
+### Frontend & Vistas
+- **EJS (Embedded JavaScript)** - Motor de plantillas para generar HTML dinámicamente.
+- **HTML5, CSS3, JavaScript** - Estándares web para la estructura y el estilo.
+- **Bootstrap** - Framework CSS para un diseño responsive y moderno.
 
 ### Desarrollo y Despliegue
-- **Docker** - Contenerización de aplicaciones
-- **Docker Compose** - Orquestación de contenedores
-- **Nodemon** - Reinicio automático en desarrollo
+- **Docker & Docker Compose** - Para crear entornos de desarrollo y producción consistentes y aislados.
+- **Nodemon** - Para reiniciar automáticamente la aplicación durante el desarrollo.
+- **Dotenv** - Para gestionar variables de entorno de forma segura.
 
 ## 📜 Scripts Disponibles
 
@@ -214,29 +216,49 @@ proyecto-node/
 
 ## ⚙️ Variables de Entorno
 
-Crea un archivo `.env` basado en `.env.example`:
+### Configuración para Vercel
+Este proyecto está diseñado para funcionar con variables de entorno para su configuración. Asegúrate de configurar las siguientes variables en tu entorno de despliegue (por ejemplo, en Vercel) para que la aplicación funcione correctamente en producción.
+
+**Nota:** Por motivos de seguridad, las claves de conexión a la base de datos no se incluyen en el repositorio.
 
 ```env
 # Configuración de la aplicación
 PORT=3000
-NODE_ENV=development
+NODE_ENV=production
 
-# Base de datos
-DATABASE_URL=mysql://usuario:password@localhost:3306/nombre_basedatos
+# Base de datos (asegúrate de conectar tu base de datos externa)
+DATABASE_URL=mysql://usuario:password@host:3306/nombre_basedatos
 
 # Autenticación JWT
 JWT_SECRETO=tu_jwt_secreto_muy_seguro_y_largo
 JWT_TIEMPO_EXPIRA=24h
-JWT_COOKIE_EXPIRES=90
 
 # reCAPTCHA
 RECAPTCHA_SECRET_KEY=tu_clave_secreta_recaptcha
 RECAPTCHA_SITE_KEY=tu_clave_sitio_recaptcha
-
-# Otras configuraciones
-SESSION_SECRET=tu_session_secret
-FRONTEND_URL=http://localhost:3000
 ```
+
+## 🚀 Despliegue
+
+Este proyecto está configurado para un despliegue sin problemas en Vercel u otras plataformas de hosting.
+
+**Pasos para el despliegue en Vercel:**
+
+1. **Conecta tu repositorio:** En Vercel, importa tu proyecto de GitHub/GitLab.
+
+2. **Configura las variables de entorno:** En la configuración del proyecto de Vercel, ve a Settings > Environment Variables y añade las variables mencionadas en la sección anterior.
+
+3. **Configura el comando de construcción:** Vercel detecta automáticamente el proyecto Node.js, pero puedes especificar el comando si lo necesitas.
+
+4. **Despliega:** Vercel se encargará de construir y desplegar tu aplicación.
+
+**Nota:** Por ser un backend, la funcionalidad de la API estará disponible en la URL del despliegue de Vercel.
+
+## ⚠️ Consideraciones del Portafolio
+
+Actualmente, algunas funciones que requieren una base de datos activa están comentadas para permitir que el proyecto se ejecute como un portafolio estático en Vercel. Esto evita errores de conexión y muestra la estructura del código sin necesidad de un servidor de bases de datos persistente.
+
+Para ejecutar el proyecto con su funcionalidad completa (incluyendo base de datos), sigue las instrucciones de **Instalación y Configuración** para correrlo de forma local con Docker o con Node.js directamente.
 
 ## 🐳 Docker
 
