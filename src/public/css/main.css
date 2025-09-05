@@ -16,10 +16,6 @@
     src:url(./font/Raleway-Medium.ttf);
 }
 @font-face {
-    font-family: 'RalewayBold';
-    src:url(./font/RalewayBold.ttf);
-}
-@font-face {
     font-family: 'RalewayExtraBold';
     src:url(./font/Raleway-ExtraBold.ttf);
 }
@@ -392,6 +388,7 @@ div#seccion-5 .row {
     position: relative;
     overflow: hidden;
     box-shadow: 0 14px 28px rgba(0,0,0,.15), 0 10px 10px rgba(0,0,0,.15);
+    border-radius: 15px 15px 0 0;
 }
 .verSitio {
     background-color: var(--color-background-verSitio);;
@@ -431,6 +428,23 @@ div#seccion-5 .row {
     background-position: 0 109% !important;
 }
 
+.project-item-container {
+    margin-bottom: 2rem;
+}
+
+.project-description {
+    padding: 1rem;
+    background-color: var(--color-fondob);
+    color: var(--color-letrab);
+    margin-top: -5px; /* Para que se pegue a la imagen */
+    box-shadow: 0 14px 28px rgba(0,0,0,.15), 0 10px 10px rgba(0,0,0,.15);
+    border-radius: 0 0 15px 15px;
+    margin-bottom: 2rem;
+}
+
+.project-description h5 {
+    font-family: 'system-ui';
+}
 #chappsy .template-scroll {
     background: url(../images/SitioChappsy.png) 0 0 no-repeat;
 }
@@ -448,6 +462,12 @@ div#seccion-5 .row {
 }
 #Agexport .template-scroll {
     background: url(../images/SitioAgexport.png) 0 0 no-repeat;
+}
+#checklisttoys .template-scroll {
+    background: url(../images/Sitiochecklisttoys.png) 0 0 no-repeat;
+}
+#CryptoCoinExpo .template-scroll {
+    background: url(../images/SitioCryptoCoinExpo.png) 0 0 no-repeat;
 }
 
 
