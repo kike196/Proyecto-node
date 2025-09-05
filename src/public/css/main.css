@@ -446,6 +446,9 @@ div#seccion-5 .row {
 #nescafe .template-scroll {
     background: url(../images/Sitionescafe.jpeg) 0 0 no-repeat;
 }
+#Agexport .template-scroll {
+    background: url(../images/SitioAgexport.png) 0 0 no-repeat;
+}
 
 
 /* Plataformas */
@@ -956,6 +959,19 @@ a.iconFooter {
    opacity:0.5 !important
 }
 
+/* Estilo para enlaces destacados */
+.link-destacado {
+    color: var(--color-destacado); 
+    font-weight: bold;
+    text-decoration: none; 
+    transition: color 0.3s ease;
+    box-shadow: none !important;
+}
+
+.link-destacado:hover {
+    color: var(--color-hover-boton); 
+    text-decoration: underline; 
+}
 
 /*Responsive*/
 
