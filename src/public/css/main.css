@@ -1285,6 +1285,10 @@ a.iconFooter {
     .verSitio {
         opacity: 1;
     }
+    .project-description {
+        margin-bottom: 3rem;
+        margin-top: -4rem;
+    }
     .plataformas {
         padding: 1rem 0;
     }
