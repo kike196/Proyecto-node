@@ -1,226 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= currentLocale %>">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title%></title>
-    <%- include('partials/head.ejs')%>
+    <title>
+        <%= title %>
+    </title>
+    <%- include('partials/head.ejs') %>
 </head>
+
 <body>
 
-    <%- include('partials/navigation.ejs')%>
+    <%- include('partials/navigation.ejs') %>
 
-    <!-- main content -->
-    <header class="container d-flex justify-content-center align-items-center">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <h1 class="display-1 text-uppercase fw-bold" alt="Enrique.dev">Enrique</h1>
-            <p class="lead text-center my-4" style="max-width: 600px;">
-                <strong style="color: var(--color-destacado);">Desarrollador FullStack</strong><br>
-                Más de 5 años de experiencia en el desarrollo de aplicaciones web robustas y escalables. Me especializo en tecnologías como PHP,
-                JavaScript, Laravel, Yii2, Vue.js y React.js, así como en la gestión de bases de datos con MySQL, PostgreSQL y la implementación de
-                soluciones con WordPress y Drupal.
+        <!-- main content -->
+        <header class="container d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <h1 class="display-1 text-uppercase fw-bold" alt="Enrique.dev">Enrique</h1>
+                <p class="lead text-center my-4" style="max-width: 600px;">
+                    <strong style="color: var(--color-destacado);">
+                        <%= __('Desarrollador FullStack') %>
+                    </strong><br>
+                    <%= __('experiencia_texto') %>
+                </p>
+                <a href="/about" class="btn btn-primary" alt="<%= __('Acerca de mí') %>">
+                    <%= __('Acerca de mí') %>
+                </a>
+                <a href="/curriculum" target="_blank" class="btn btn-primary mt-2" alt="<%= __('Currículum') %>">
+                    <%= __('Currículum') %>
+                </a>
+            </div>
+        </header>
+
+        <div id="seccion-4" class="container service post_article sectionmenuus">
+            <p class="tittleService">
+                <%= __('Servicios') %>
             </p>
-            <a href="/about" class="btn btn-primary" alt="Acerca">Acerca de mí</a>
-            <a href="/curriculum" target="_blank" class="btn btn-primary mt-2" alt="curriculum">Currículum</a>
+            <div class="row justifyCenter">
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item1.png" alt="<%= __('desarrollo web') %>" />
+                        <p class="tittleCard">
+                            <%= __('Desarrollo Web') %>
+                        </p>
+                        <p>
+                            <%= __('desarrollo_web_desc') %>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item3.png" alt="<%= __('Plataformas') %>" />
+                        <p class="tittleCard">
+                            <%= __('Plataformas') %>
+                        </p>
+                        <p>
+                            <%= __('plataformas_desc') %>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item4.png" alt="<%= __('Ecommerce') %>" />
+                        <p class="tittleCard">
+                            <%= __('Ecommerce') %>
+                        </p>
+                        <p>
+                            <%= __('ecommerce_desc') %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justifyCenter">
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item6.png" alt="<%= __('cms') %>" />
+                        <p class="tittleCard">
+                            <%= __('CMS') %>
+                        </p>
+                        <p>
+                            <%= __('cms_desc') %>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item7.png" alt="<%= __('diseño web') %>" />
+                        <p class="tittleCard">
+                            <%= __('Diseño Web Efectivo') %>
+                        </p>
+                        <p>
+                            <%= __('diseno_web_desc') %>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
+                    <div class="animationCard">
+                        <img class="items" src="/images/item8.png" alt="<%= __('Consultoria') %>" />
+                        <p class="tittleCard">
+                            <%= __('Consultoría UX/UI') %>
+                        </p>
+                        <p>
+                            <%= __('consultoria_desc') %>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
 
-    <div id="seccion-4" class="container service post_article sectionmenuus">
-        <p class="tittleService" data-section="section4" data-value="title">Servicios</p>
-        <div class="row  justifyCenter">
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item1.png" alt="desarrollo web" />
-                    <p class="tittleCard" data-section="section4" data-value="tcard1">Desarrollo Web</p>
-                    <p data-section="section4" data-value="cardt1">Diseño y desarrollo sitios y aplicaciones web a la medida de tus necesidades.</p>
+        <div id="seccion-5" class="sitios post_article sectionmenuus">
+            <div class="container">
+                <div class="tituloSitios">
+                    <%= __('Portafolio') %>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item3.png" alt="Plataformas" />
-                    <p class="tittleCard" data-section="section4" data-value="tcard3">Plataformas</p>
-                    <p data-section="section4" data-value="cardt3">Diseño, estructuro y desarrollo plataformas personalizadas para tu negocio.</p>
+                <p class="text-center mb-5">
+                    <%= __('visitar_texto') %> <a href="https://www.weclickdigital.com/" target="_blank"
+                            rel="noopener noreferrer" class="link-destacado">Weclick Digital</a>,
+                        <%= __('proyectos_texto') %>
+                </p>
+                <div class="row">
+                    <div class="col-md-4" id="Minestle">
+                        <a target="_blank" href="https://www.minestle.com/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Mi Nestlé (Centroamérica)</h5>
+                            <p>
+                                <%= __('minestle_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">Drupal</span>
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">CSS3</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="nescafe">
+                        <a target="_blank" href="https://www.nescafe.com/cam/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Nescafé (Guatemala)</h5>
+                            <p>
+                                <%= __('nescafe_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">Drupal</span>
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">CSS3</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="CryptoCoinExpo">
+                        <a target="_blank" href="https://demo.weclickdigital.com/CryptoCoinExpo/"
+                            rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Crypto Coin Expo</h5>
+                            <p>
+                                <%= __('crypto_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">React</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item4.png" alt="Ecommerce" />
-                    <p class="tittleCard">Ecommerce</p>
-                    <p data-section="section4" data-value="cardt4">Elevo tu potencial en ventas por medio de e-Commerce con integración de pasarelas de pagos.</p>
+                <div class="row">
+                    <div class="col-md-4" id="chappsy">
+                        <a>
+                            <div class="verSitio">
+                                <%= __('No disponible') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Chappsy Guatemala</h5>
+                            <p>
+                                <%= __('chappsy_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">React</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="viajegt">
+                        <a target="_blank" href="https://viajegt.com/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Viaje GT (COMITURS - Agexport)</h5>
+                            <p>
+                                <%= __('viajegt_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">WordPress</span>
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">CSS3</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="Agexport">
+                        <a target="_blank" href="https://sectores.export.com.gt/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Sectores de Exportación AGEXPORT</h5>
+                            <p>
+                                <%= __('agexport_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">WordPress</span>
+                            <span class="badge bg-secondary">PHP</span>
+                            <span class="badge bg-secondary">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" id="checklisttoys">
+                        <a target="_blank" href="https://motu.checklisttoys.com/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Checklist Toys</h5>
+                            <p>
+                                <%= __('checklist_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">Yii2</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4" id="medicentergt">
+                        <a target="_blank" href="http://medicentergt.com/" rel="noopener noreferrer">
+                            <div class="verSitio">
+                                <%= __('Ver sitio web') %>
+                            </div>
+                            <div class="template-scroll"></div>
+                        </a>
+                        <div class="project-description">
+                            <h5>Medicenter Guatemala</h5>
+                            <p>
+                                <%= __('medicenter_desc') %>
+                            </p>
+                            <span class="badge bg-secondary">Yii2</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row  justifyCenter">
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item6.png" alt="cms" />
-                    <p class="tittleCard">CMS</p>
-                    <p data-section="section4" data-value="cardt6">Desarrollo sitios rápidos con WordPress y Drupal, aplicando diferentes técnicas de seguridad.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item7.png" alt="diseño web" />
-                    <p class="tittleCard" data-section="section4" data-value="tcard7">Diseño Web Efectivo</p>
-                    <p data-section="section4" data-value="cardt7">Realizo diseño web efectivo que genera impacto en tu marca.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 contentCard">
-                <div class="animationCard">
-                    <img class="items" src="/images/item8.png" alt="Consultoria" />
-                    <p class="tittleCard" data-section="section4" data-value="tcard8">Consultoría UX/UI</p>
-                    <p data-section="section4" data-value="cardt8">Diseño y creo la interfaz que tu empresa necesita, segura y fácil de usar.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="seccion-5" class="sitios post_article sectionmenuus">
-        <div class="container">
-            <div class="tituloSitios" data-section="section5" data-value="t1">
-                Portafolio
-            </div>
-            <p class="text-center mb-5">
-                Puedes visitar también la página de <a href="https://www.weclickdigital.com/" target="_blank" rel="noopener noreferrer" class="link-destacado">Weclick Digital</a>, 
-                donde encontraras más proyectos en los que he colaborado como desarrollador web.
-            </p>
-            <div class="row">
-                <div class="col-md-4" id="Minestle">
-                    <a target="_blank" href="https://www.minestle.com/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Mi Nestlé (Centroamérica)</h5>
-                        <p>Sitio con artículos, recetas, promociones y podcast con filtro por país.</p>
-                        <span class="badge bg-secondary">Drupal</span>
-                        <span class="badge bg-secondary">PHP</span>
-                        <span class="badge bg-secondary">CSS3</span>
-                    </div>
-                </div>
-                <div class="col-md-4" id="nescafe">
-                    <a target="_blank" href="https://www.nescafe.com/cam/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Nescafé (Guatemala)</h5>
-                        <p>Desarrollo de sitio web para la edición especial Nescafé Huehuetenango.</p>
-                        <span class="badge bg-secondary">Drupal</span>
-                        <span class="badge bg-secondary">PHP</span>
-                        <span class="badge bg-secondary">CSS3</span>
-                    </div>
-                </div>
-                <div class="col-md-4" id="CryptoCoinExpo">
-                    <a target="_blank" href="https://demo.weclickdigital.com/CryptoCoinExpo/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Crypto Coin Expo</h5>
-                        <p>Landing con cuenta regresiva para evento de exposición de crypto monedas en Dubai.</p>
-                        <span class="badge bg-secondary">React</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" id="chappsy">
-                    <a>
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            No disponible
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Chappsy Guatemala</h5>
-                        <p>Desarrollo de sitio web con activación de e-commerce al instante.</p>
-                        <span class="badge bg-secondary">React</span>
-                    </div>
-                </div>
-                <div class="col-md-4" id="viajegt">
-                    <a target="_blank" href="https://viajegt.com/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Viaje GT (COMITURS - Agexport)</h5>
-                        <p>Directorio de empresas asociadas y blog para la Comisión de Turismo Sostenible de Agexport.</p>
-                        <span class="badge bg-secondary">WordPress</span>
-                        <span class="badge bg-secondary">PHP</span>
-                        <span class="badge bg-secondary">CSS3</span>
-                    </div>
-                </div>
-                <div class="col-md-4" id="Agexport">
-                    <a target="_blank" href="https://sectores.export.com.gt/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Sectores de Exportación AGEXPORT</h5>
-                        <p>Desarrollo de multisitio de Oferta Exportable de los sectores de Agexport Guatemala.</p>
-                        <span class="badge bg-secondary">WordPress</span>
-                        <span class="badge bg-secondary">PHP</span>
-                        <span class="badge bg-secondary">CSS3</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" id="checklisttoys">
-                    <a target="_blank" href="https://motu.checklisttoys.com/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Checklist Toys</h5>
-                        <p>Plataforma para llevar un checklist de colecciones de juguetes.</p>
-                        <span class="badge bg-secondary">Yii2</span>
-                        <span class="badge bg-secondary">MySQL</span>
-                    </div>
-                </div>
-                <div class="col-md-4" id="medicentergt">
-                    <a target="_blank" href="http://medicentergt.com/" rel="noopener noreferrer">
-                        <div class="verSitio" data-section="section5" data-value="t2">
-                            Ver sitio web
-                        </div>
-                        <div class="template-scroll"></div>
-                    </a>
-                    <div class="project-description">
-                        <h5>Medicenter Guatemala</h5>
-                        <p>Sitio web autoadministrable con blog de noticias.</p>
-                        <span class="badge bg-secondary">Yii2</span>
-                        <span class="badge bg-secondary">MySQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <%- include('partials/footer.ejs') %>
+            <% if(alert) { %>
+                <script>
+                    Swal.fire({
+                        title: '<%= alertTitle %>',
+                        text: '<%= alertMessage %>',
+                        icon: '<%= alertIcon %>',
+                        showConfirmButton: '<%= showConfirmButton %>',
+                        timer: '<%= timer %>'
+                    }).then(() => {
+                        window.location = '/<%= ruta %>'
+                    })
+                </script>
+                <% } %>
 
-    <%- include('partials/footer.ejs')%>
-    <% if(alert) { %>
-      <script>
-        Swal.fire({
-          title: '<%= alertTitle %>',
-          text:'<%= alertMessage %>',
-          icon:'<%= alertIcon %>',
-          showConfirmButton: '<%= showConfirmButton %>',
-          timer: '<%= timer %>'
-        }).then(()=>{
-          window.location = '/<%= ruta %>'
-        })
-      </script>
-    <% } %>
-    
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<%= currentLocale %>">
 
 <head>
     <meta charset="UTF-8">
@@ -19,36 +19,36 @@
         <div class="container">
             <main class="pt-5">
                 <section class="mb-5 text-center">
-                    <h1 class="display-4 mb-5">Acerca de mí</h1>
+                    <h1 class="display-4 mb-5">
+                        <%= __('Acerca de mí') %>
+                    </h1>
                     <div class="row align-items-center">
                         <div class="col-lg-4 mb-4 mb-lg-0">
                             <img src="/images/profile.jpg" class="img-fluid rounded-circle profile-picture"
-                                alt="Foto de perfil">
+                                alt="<%= __('Foto de perfil') %>">
                         </div>
                         <div class="col-lg-8 text-lg-start">
                             <p class="lead">
-                                Soy un desarrollador apasionado con más de 5 años de experiencia en la creación de
-                                aplicaciones web robustas y escalables. Me especializo en tecnologías como PHP,
-                                JavaScript, Laravel, Yii2, Vue.js y React.js, así como en la gestión de bases de datos
-                                con MySQL, PostgreSQL y la implementación de soluciones con WordPress y Drupal.
+                                <%= __('acerca_descripcion_1') %>
                             </p>
                             <p class="lead mt-3">
-                                Disfruto del desafío de explorar y dominar nuevas tecnologías para ampliar
-                                constantemente mis habilidades. Me encanta establecer metas desafiantes para superarme a
-                                mí mismo y encontrar soluciones creativas a los obstáculos que se presentan,
-                                comprometiéndome a contribuir con mi mejor esfuerzo en cada proyecto.
+                                <%= __('acerca_descripcion_2') %>
                             </p>
                         </div>
                     </div>
                 </section>
 
                 <section class="my-5 py-4">
-                    <h2 class="section-title display-5 mb-5 text-center">Habilidades Técnicas</h2>
+                    <h2 class="section-title display-5 mb-5 text-center">
+                        <%= __('Habilidades Técnicas') %>
+                    </h2>
 
                     <div class="row">
                         <div class="col-md-6 mb-4">
                             <div class="skill-category">
-                                <h3>Frontend</h3>
+                                <h3>
+                                    <%= __('Frontend') %>
+                                </h3>
                                 <div class="skill-list">
                                     <span class="skill-item">HTML5</span>
                                     <span class="skill-item">CSS3/SASS</span>
@@ -62,15 +62,21 @@
                                     <span class="skill-item">Material-UI</span>
                                     <span class="skill-item">Styled Components</span>
                                     <span class="skill-item">Emotion</span>
-                                    <span class="skill-item">Responsive Design</span>
-                                    <span class="skill-item">Atomic Design</span>
+                                    <span class="skill-item">
+                                        <%= __('Diseño Responsivo') %>
+                                    </span>
+                                    <span class="skill-item">
+                                        <%= __('Diseño Atómico') %>
+                                    </span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-6 mb-4">
                             <div class="skill-category">
-                                <h3>Backend & Bases de Datos</h3>
+                                <h3>
+                                    <%= __('Backend & Bases de Datos') %>
+                                </h3>
                                 <div class="skill-list">
                                     <span class="skill-item">PHP</span>
                                     <span class="skill-item">Laravel</span>
@@ -88,7 +94,9 @@
 
                         <div class="col-md-6 mb-4">
                             <div class="skill-category">
-                                <h3>CMS & Plataformas</h3>
+                                <h3>
+                                    <%= __('CMS & Plataformas') %>
+                                </h3>
                                 <div class="skill-list">
                                     <span class="skill-item">WordPress</span>
                                     <span class="skill-item">Drupal</span>
@@ -98,7 +106,9 @@
 
                         <div class="col-md-6 mb-4">
                             <div class="skill-category">
-                                <h3>Herramientas & Metodologías</h3>
+                                <h3>
+                                    <%= __('Herramientas & Metodologías') %>
+                                </h3>
                                 <div class="skill-list">
                                     <span class="skill-item">Git</span>
                                     <span class="skill-item">GitHub</span>
@@ -107,9 +117,15 @@
                                     <span class="skill-item">Testing Library</span>
                                     <span class="skill-item">Linux</span>
                                     <span class="skill-item">Vim</span>
-                                    <span class="skill-item">Optimización</span>
-                                    <span class="skill-item">Mantenibilidad</span>
-                                    <span class="skill-item">Soporte en Producción</span>
+                                    <span class="skill-item">
+                                        <%= __('Optimización') %>
+                                    </span>
+                                    <span class="skill-item">
+                                        <%= __('Mantenibilidad') %>
+                                    </span>
+                                    <span class="skill-item">
+                                        <%= __('Soporte en Producción') %>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -117,27 +133,53 @@
                 </section>
 
                 <section class="my-5 py-4">
-                    <h2 class="section-title display-5 mb-5 text-center">Experiencia Profesional</h2>
+                    <h2 class="section-title display-5 mb-5 text-center">
+                        <%= __('Experiencia Profesional') %>
+                    </h2>
 
                     <div class="experience">
                         <div class="experience-header">
                             <div class="company">IA2030</div>
-                            <div class="position">Programador Full Stack</div>
+                            <div class="position">
+                                <%= __('Programador Full Stack') %>
+                            </div>
                             <div class="date-location">Oct. 2024 – Jul. 2025 | Nueva Esparta, Venezuela</div>
                         </div>
                         <p class="experience-summary">
-                            Responsable de la creación y mantenimiento de una plataforma de administración central para una compañía de sistemas en el sector de juegos y loterías, garantizando la fiabilidad, seguridad y usabilidad del sistema para usuarios internos.
+                            <%= __('ia2030_summary') %>
                         </p>
                         <ul class="responsibilities">
-                            <li><strong>Desarrollo y Mantenimiento de Funcionalidades:</strong> Diseñé, implementé y mantuve características críticas para múltiples proyectos web, asegurando la escalabilidad y estabilidad del sistema. Esto incluyó la configuración dinámica de productos y sorteos, y la creación de componentes reutilizables para optimizar el flujo de trabajo.</li>
-                            <li><strong>Optimización y Rendimiento:</strong> Optimicé la arquitectura del código, reduciendo la complejidad y mejorando la mantenibilidad para futuros desarrollos. Esto resultó en una mejora significativa en el rendimiento de la aplicación.</li>
-                            <li><strong>Liderazgo de Módulos:</strong> Dirigí la creación de módulos críticos para la plataforma de administración, gestionando el proyecto desde los requisitos iniciales hasta el despliegue en producción. Esto incluyó la colaboración estrecha con equipos de back-end y diseño.</li>
-                            <li><strong>Soporte y Depuración en Producción:</strong> Brindé soporte de producción de nivel 3, respondiendo a incidentes y depurando fallos en tiempo real para garantizar la continuidad del servicio y la satisfacción del cliente.</li>
-                            <li><strong>Manejo de Bases de Datos:</strong> Colaboré en la optimización de consultas a la base de datos para la edición de entidades y productos, evitando problemas de rendimiento y timeouts.</li>
+                            <li><strong>
+                                    <%= __('ia2030_resp_1_title') %>
+                                </strong>
+                                <%= __('ia2030_resp_1_desc') %>
+                            </li>
+                            <li><strong>
+                                    <%= __('ia2030_resp_2_title') %>
+                                </strong>
+                                <%= __('ia2030_resp_2_desc') %>
+                            </li>
+                            <li><strong>
+                                    <%= __('ia2030_resp_3_title') %>
+                                </strong>
+                                <%= __('ia2030_resp_3_desc') %>
+                            </li>
+                            <li><strong>
+                                    <%= __('ia2030_resp_4_title') %>
+                                </strong>
+                                <%= __('ia2030_resp_4_desc') %>
+                            </li>
+                            <li><strong>
+                                    <%= __('ia2030_resp_5_title') %>
+                                </strong>
+                                <%= __('ia2030_resp_5_desc') %>
+                            </li>
                         </ul>
-                    
+
                         <div class="project-highlights">
-                            <h5>Tecnologías principales utilizadas:</h5>
+                            <h5>
+                                <%= __('Tecnologías principales utilizadas') %>:
+                            </h5>
                             <div>
                                 <span class="tech-badge">Vue.js 3</span>
                                 <span class="tech-badge">TypeScript</span>
@@ -153,125 +195,177 @@
                             class="company" style="text-decoration: none;">
                             Weclick Digital
                         </a>
-                        <div class="position">Desarrollador Web Senior</div>
+                        <div class="position">
+                            <%= __('Desarrollador Web Senior') %>
+                        </div>
                         <div class="date-location">May. 2022 – Feb. 2024 | Nueva Esparta, Venezuela (Remoto)</div>
                         <ul class="responsibilities">
-                            <li>Lideré el ciclo completo de desarrollo para aplicaciones web y campañas de marketing
-                                digital para importantes clientes internacionales en Centro América y Uruguay.</li>
-                            <li>Colaboré en equipos multidisciplinarios siguiendo metodologías ágiles para entregar
-                                proyectos dentro de los plazos establecidos.</li>
-                            <li>Implementé soluciones técnicas que procesaron transacciones y gestionaron datos de
-                                usuarios de manera segura y eficiente.</li>
+                            <li>
+                                <%= __('weclick_senior_resp_1') %>
+                            </li>
+                            <li>
+                                <%= __('weclick_senior_resp_2') %>
+                            </li>
+                            <li>
+                                <%= __('weclick_senior_resp_3') %>
+                            </li>
                         </ul>
 
                         <div class="project-highlights">
-                            <h5>Proyectos Destacados (2022):</h5>
+                            <h5>
+                                <%= __('Proyectos Destacados') %> (2022):
+                            </h5>
 
                             <div class="project-item">
-                                <strong>Sistema de Promociones - Borges Centro América</strong>
+                                <strong>
+                                    <%= __('proyecto_borges_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">REST API</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé un sistema completo de gestión de promociones para productos
-                                        alimenticios</li>
-                                    <li>Implementé módulos de administración, validación de participantes y generación
-                                        de reportes</li>
-                                    <li>Optimicé el rendimiento para manejar picos de tráfico durante campañas
-                                        promocionales</li>
+                                    <li>
+                                        <%= __('proyecto_borges_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_borges_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_borges_desc_3') %>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Sistema de Canjeo de Puntos - Coors Light Centro América</strong>
+                                <strong>
+                                    <%= __('proyecto_coors_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">JavaScript</span>
                                 </div>
                                 <ul>
-                                    <li>Creé una plataforma de fidelización donde usuarios canjeaban puntos por premios
+                                    <li>
+                                        <%= __('proyecto_coors_desc_1') %>
                                     </li>
-                                    <li>Integré con sistemas de cupones y validación en puntos de venta</li>
-                                    <li>Diseñé la arquitectura de base de datos para tracking de transacciones y puntos
+                                    <li>
+                                        <%= __('proyecto_coors_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_coors_desc_3') %>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Ventanilla de Información - Agexport Guatemala</strong>
+                                <strong>
+                                    <%= __('proyecto_agexport_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">Bootstrap</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé un sistema de gestión de información para exportadores</li>
-                                    <li>Implementé paneles administrativos y módulos de categorización de contenido</li>
+                                    <li>
+                                        <%= __('proyecto_agexport_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_agexport_desc_2') %>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Sistema de Recomendación - Purina Centro América</strong>
+                                <strong>
+                                    <%= __('proyecto_purina_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
-                                    <span class="tech-badge">Algoritmos</span>
+                                    <span class="tech-badge">
+                                        <%= __('Algoritmos') %>
+                                    </span>
                                 </div>
                                 <ul>
-                                    <li>Creé un sistema interactivo para recomendar nombres de mascotas basado en
-                                        características</li>
-                                    <li>Implementé un algoritmo de matching que mejoró la experiencia de usuario</li>
+                                    <li>
+                                        <%= __('proyecto_purina_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_purina_desc_2') %>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Sitio Minestle - Nestlé Centro América</strong>
+                                <strong>
+                                    <%= __('proyecto_minestle_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Drupal</span>
                                     <span class="tech-badge">PHP</span>
                                     <span class="tech-badge">CSS3</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé y personalicé un sitio corporativo utilizando Drupal</li>
-                                    <li>Implementé módulos personalizados y optimicé el rendimiento del sitio</li>
+                                    <li>
+                                        <%= __('proyecto_minestle_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_minestle_desc_2') %>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="project-highlights mt-4">
-                            <h5>Proyectos Destacados (2021):</h5>
+                            <h5>
+                                <%= __('Proyectos Destacados') %> (2021):
+                            </h5>
 
                             <div class="project-item">
-                                <strong>Campañas de Ebeauty Uruguay y Beauty Zone</strong>
+                                <strong>
+                                    <%= __('proyecto_ebeauty_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">JavaScript</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé múltiples plataformas de promociones y ofertas de productos para el
-                                        mercado uruguayo y centroamericano</li>
-                                    <li>Implementé sistemas de registro, validación y seguimiento de participantes</li>
-                                    <li>Creé paneles de administración para el monitoreo en tiempo real de las campañas
+                                    <li>
+                                        <%= __('proyecto_ebeauty_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_ebeauty_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_ebeauty_desc_3') %>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Landing Pages y Centros de Preferencia - Nestlé Centro América</strong>
+                                <strong>
+                                    <%= __('proyecto_nestle_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Drupal</span>
                                     <span class="tech-badge">PHP</span>
                                     <span class="tech-badge">JavaScript</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé landing pages para campañas específicas de productos Nescafé</li>
-                                    <li>Implementé centros de preferencia para segmentación de audiencia y marketing
-                                        personalizado</li>
-                                    <li>Optimicé los sitios para máximo rendimiento y conversión</li>
+                                    <li>
+                                        <%= __('proyecto_nestle_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_nestle_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_nestle_desc_3') %>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -282,60 +376,90 @@
                             class="company" style="text-decoration: none;">
                             Weclick Digital
                         </a>
-                        <div class="position">Desarrollador Web</div>
+                        <div class="position">
+                            <%= __('Desarrollador Web') %>
+                        </div>
                         <div class="date-location">May. 2019 – Dic. 2019 | Nueva Esparta, Venezuela (Remoto)</div>
                         <ul class="responsibilities">
-                            <li>Participé en el desarrollo de aplicaciones web personalizadas para diversos clientes,
-                                principalmente en Guatemala.</li>
-                            <li>Contribuí al ciclo completo de desarrollo desde el análisis de requerimientos hasta la
-                                implementación.</li>
-                            <li>Mantuve y optimicé sistemas existentes mejorando su funcionalidad y rendimiento.</li>
+                            <li>
+                                <%= __('weclick_junior_resp_1') %>
+                            </li>
+                            <li>
+                                <%= __('weclick_junior_resp_2') %>
+                            </li>
+                            <li>
+                                <%= __('weclick_junior_resp_3') %>
+                            </li>
                         </ul>
 
                         <div class="project-highlights">
-                            <h5>Proyectos Destacados (2019):</h5>
+                            <h5>
+                                <%= __('Proyectos Destacados') %> (2019):
+                            </h5>
 
                             <div class="project-item">
-                                <strong>Sistema de Facturación - Harley Guatemala</strong>
+                                <strong>
+                                    <%= __('proyecto_harley_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">jQuery</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé un sistema de registro de facturación y gestión de requerimientos de
-                                        clientes</li>
-                                    <li>Implementé módulos de generación de reportes y seguimiento de estados</li>
-                                    <li>Automaticé procesos manuales mejorando la eficiencia operativa</li>
+                                    <li>
+                                        <%= __('proyecto_harley_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_harley_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_harley_desc_3') %>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Sistema de Inscripción - Escuela La Asunción Guatemala</strong>
+                                <strong>
+                                    <%= __('proyecto_escuela_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">Yii2</span>
                                     <span class="tech-badge">MySQL</span>
                                     <span class="tech-badge">Bootstrap</span>
                                 </div>
                                 <ul>
-                                    <li>Creé una plataforma completa de inscripción en línea para alumnos</li>
-                                    <li>Implementé validaciones de datos y flujos de aprobación</li>
-                                    <li>Diseñé una interfaz amigable para usuarios con diferentes niveles de acceso</li>
+                                    <li>
+                                        <%= __('proyecto_escuela_desc_1') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_escuela_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_escuela_desc_3') %>
+                                    </li>
                                 </ul>
                             </div>
 
                             <div class="project-item">
-                                <strong>Sitios Informativos - VUPE Guatemala y Agexport Guatemala</strong>
+                                <strong>
+                                    <%= __('proyecto_vupe_title') %>
+                                </strong>
                                 <div>
                                     <span class="tech-badge">WordPress</span>
                                     <span class="tech-badge">PHP</span>
                                     <span class="tech-badge">CSS3</span>
                                 </div>
                                 <ul>
-                                    <li>Desarrollé sitios web informativos con WordPress</li>
-                                    <li>Personalicé temas y plugins según los requerimientos específicos de cada cliente
+                                    <li>
+                                        <%= __('proyecto_vupe_desc_1') %>
                                     </li>
-                                    <li>Optimicé el SEO y la experiencia de usuario en todos los proyectos</li>
+                                    <li>
+                                        <%= __('proyecto_vupe_desc_2') %>
+                                    </li>
+                                    <li>
+                                        <%= __('proyecto_vupe_desc_3') %>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -37,6 +37,17 @@
             <i class="fas fa-sun" alt="Night"></i>
         </button>
       </div>
+      <!-- Botones para cambiar de idioma -->
+      <div class="d-flex align-items-center ms-2">
+        <a href="/change-lang/es" class="btn btn-sm <%= getLocale() === 'es' ? 'btn-light' : 'btn-outline-light' %> me-2"
+          title="Español">
+          ES
+        </a>
+        <a href="/change-lang/en" class="btn btn-sm <%= getLocale() === 'en' ? 'btn-light' : 'btn-outline-light' %>"
+          title="English">
+          EN
+        </a>
+      </div>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -44,10 +55,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/">Inicio</a>
+          <a class="nav-link" href="/"><%= __('Inicio') %></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">Acerca de mi</a>
+          <a class="nav-link" href="/about"><%= __('Acerca de mi') %></a>
         </li>
         <!--
           <li class="nav-item" id="contactNavItem">
