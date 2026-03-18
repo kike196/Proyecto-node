@@ -17,7 +17,7 @@ router.get('/curriculum', (req, res) => {
     // Definir los archivos posibles
     const cvFiles = {
         en: './src/public/files/Enrique_Aranaga_Resume.pdf',
-        es: './src/public/files/Enrique_Aranaga_Currículum.pdf'
+        es: './src/public/files/Enrique_Aranaga_Curriculum.pdf'
     };
     
     // Elegir el archivo según el idioma
