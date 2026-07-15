@@ -39,11 +39,11 @@
       </div>
       <!-- Botones para cambiar de idioma -->
       <div class="d-flex align-items-center ms-2">
-        <a href="/change-lang/es" class="btn btn-sm <%= getLocale() === 'es' ? 'btn-light' : 'btn-outline-light' %> me-2"
+        <a href="/change-lang/es?redirect=<%= encodeURIComponent(currentPath) %>" class="btn btn-sm <%= getLocale() === 'es' ? 'btn-light' : 'btn-outline-light' %> me-2"
           title="Español">
           ES
         </a>
-        <a href="/change-lang/en" class="btn btn-sm <%= getLocale() === 'en' ? 'btn-light' : 'btn-outline-light' %>"
+        <a href="/change-lang/en?redirect=<%= encodeURIComponent(currentPath) %>" class="btn btn-sm <%= getLocale() === 'en' ? 'btn-light' : 'btn-outline-light' %>"
           title="English">
           EN
         </a>

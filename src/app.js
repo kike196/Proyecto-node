@@ -54,6 +54,7 @@ app.use((req, res, next) => {
   res.locals.__ = res.__;
   res.locals.getLocale = () => req.getLocale();
   res.locals.currentLocale = req.getLocale();
+  res.locals.currentPath = req.path;
   next();
 });
 
@@ -101,7 +102,10 @@ app.get('/change-lang/:lang', (req, res) => {
     });
     req.setLocale(lang);
   }
-  res.redirect('back');
+  // Redirigir a la URL especificada en el query parameter 'redirect',
+  // o a '/' si no se proporciona, para evitar bucles de redirección
+  const redirectUrl = req.query.redirect || '/';
+  res.redirect(redirectUrl);
 });
 
 // Utilizar las rutas definidas
